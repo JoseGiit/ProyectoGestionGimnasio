@@ -22,28 +22,34 @@ public class ClienteDAO extends Dao<ClienteDTO> {
 
     @Override
     public boolean create(ClienteDTO cliente) throws SQLException {
-        String query = "INSERT INTO clientes (cedula, nombre, tipo_membresia, contacto) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, cliente.getCedula());
+        String query = "call sp_crear_cliente(?, ?, ?, ?, ?, ?, ?)";
+        try (CallableStatement stmt = connection.prepareCall(query)) {
+            stmt.setInt(1, cliente.getId());
             stmt.setString(2, cliente.getNombre());
-            stmt.setString(3, cliente.getTipoMembresia());
-            stmt.setString(4, cliente.getContacto());
+            stmt.setDate(3, new java.sql.Date(cliente.getFechaNacimiento().getTime()));
+            stmt.setString(4, cliente.getCorreo());
+             stmt.setString(5, cliente.getTelefono());
+            stmt.setString(6, cliente.getTipoMembresia());
+            stmt.setDate(7, new java.sql.Date(cliente.getMembresiaVencimiento().getTime()));
             return stmt.executeUpdate() > 0;
         }
     }
 
     @Override
     public ClienteDTO read(Object id) throws SQLException {
-        String query = "SELECT * FROM clientes WHERE id = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, (int) id);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
+        String query = "call sp_leer_clientes()";
+        try (CallableStatement stmt = connection.prepareCall(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                if (rs.getInt("id") == (int) id) {
                     return new ClienteDTO(
-                            rs.getString("cedula"),
-                            rs.getString("nombre"),
-                            rs.getString("tipo_membresia"),
-                            rs.getString("contacto")
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getDate("fecha_nacimiento"),
+                        rs.getString("correo"),
+                        rs.getString("telefono"),
+                        rs.getString("tipo_membresia"),
+                        rs.getDate("membresia_vencimiento")
                     );
                 }
             }
@@ -54,14 +60,18 @@ public class ClienteDAO extends Dao<ClienteDTO> {
     @Override
     public List<ClienteDTO> readAll() throws SQLException {
         List<ClienteDTO> clientes = new ArrayList<>();
-        String query = "SELECT * FROM clientes";
-        try (PreparedStatement stmt = connection.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
+        String query = "call sp_leer_clientes()";
+        try (CallableStatement stmt = connection.prepareCall(query);
+             ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 clientes.add(new ClienteDTO(
-                        rs.getString("cedula"),
-                        rs.getString("nombre"),
-                        rs.getString("tipo_membresia"),
-                        rs.getString("contacto")
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getDate("fecha_nacimiento"),
+                    rs.getString("correo"),
+                    rs.getString("telefono"),
+                    rs.getString("tipo_membresia"),
+                    rs.getDate("membresia_vencimiento")
                 ));
             }
         }
@@ -70,44 +80,22 @@ public class ClienteDAO extends Dao<ClienteDTO> {
 
     @Override
     public boolean update(ClienteDTO cliente) throws SQLException {
-        String query = "UPDATE clientes SET nombre = ?, tipo_membresia = ?, contacto = ? WHERE cedula = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, cliente.getNombre());
-            stmt.setString(2, cliente.getTipoMembresia());
-            stmt.setString(3, cliente.getContacto());
-            stmt.setString(4, cliente.getCedula());
+        String query = "call sp_actualizar_cliente(?, ?, ?, ?, )";
+        try (CallableStatement stmt = connection.prepareCall(query)) {
+            stmt.setInt(1, cliente.getId());
+            stmt.setString(2, cliente.getCorreo());
+             stmt.setString(3, cliente.getTelefono());
+            stmt.setString(4, cliente.getTipoMembresia());
             return stmt.executeUpdate() > 0;
         }
     }
 
     @Override
     public boolean delete(Object id) throws SQLException {
-        String query = "DELETE FROM clientes WHERE id = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+        String query = "call sp_eliminar_cliente(?)";
+        try (CallableStatement stmt = connection.prepareCall(query)) {
             stmt.setInt(1, (int) id);
             return stmt.executeUpdate() > 0;
         }
-    }
-    // Búsqueda para cliente por nombre, tipo de membresía, y cédula
-
-    public List<ClienteDTO> buscarClientes(String nombre, String tipoMembresia, String cedula) throws SQLException {
-        List<ClienteDTO> clientes = new ArrayList<>();
-        String query = "SELECT * FROM clientes WHERE nombre LIKE ? AND tipo_membresia LIKE ? AND cedula LIKE ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, "%" + (nombre != null ? nombre : "") + "%");
-            stmt.setString(2, "%" + (tipoMembresia != null ? tipoMembresia : "") + "%");
-            stmt.setString(3, "%" + (cedula != null ? cedula : "") + "%");
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    clientes.add(new ClienteDTO(
-                            rs.getString("cedula"),
-                            rs.getString("nombre"),
-                            rs.getString("tipo_membresia"),
-                            rs.getString("contacto")
-                    ));
-                }
-            }
-        }
-        return clientes;
     }
 }

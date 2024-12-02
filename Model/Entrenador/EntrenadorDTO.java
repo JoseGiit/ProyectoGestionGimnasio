@@ -10,49 +10,33 @@ package Model.Entrenador;
  */
 public class EntrenadorDTO {
 
-    private String nombre;
-    private String contacto;
-    private String especialidades;
+     private int id;
+    private final String nombre;
+    private final String contacto;
+    private final String especialidades;
 
+    public int getId() {
+        return id;
+    }
     public String getNombre() {
         return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getContacto() {
         return contacto;
     }
-
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
-    }
-
     public String getEspecialidades() {
         return especialidades;
     }
 
-    public void setEspecialidades(String especialidades) {
-        this.especialidades = especialidades;
-    }
-
-    public EntrenadorDTO(String nombre, String contacto, String especialidades) {
+    public EntrenadorDTO(int id, String nombre, String contacto, String especialidades) {
+        this.id = id;
         this.nombre = nombre;
         this.contacto = contacto;
         this.especialidades = especialidades;
     }
-
-    public EntrenadorDTO() {
-    }
-
-    @Override
-    public String toString() {
-        return "EntrenadorDTO{"
-                + "nombre='" + nombre + '\''
-                + ", contacto='" + contacto + '\''
-                + ", especialidades='" + especialidades + '\''
-                + '}';
+        public EntrenadorDTO( String nombre, String contacto, String especialidades) {
+        this.nombre = nombre;
+        this.contacto = contacto;
+        this.especialidades = especialidades;
     }
 }

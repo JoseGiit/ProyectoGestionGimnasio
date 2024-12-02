@@ -4,66 +4,62 @@
  */
 package Model.Cliente;
 
+import java.util.Date;
+
 /**
  *
  * @author jdarg
  */
 public class ClienteDTO {
 
-    private String cedula;
-    private String nombre;
-    private String tipoMembresia;
-    private String contacto;
+    private final int id;
+    private final String nombre;
+    private final Date fechaNacimiento;
+    private final String correo;
+    private final String telefono;
+    private final String tipoMembresia;
+    private final Date membresiaVencimiento;
 
-    public String getCedula() {
-        return cedula;
+    public int getId() {
+        return id;
     }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
+    
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
+
 
     public String getTipoMembresia() {
         return tipoMembresia;
     }
 
-    public void setTipoMembresia(String tipoMembresia) {
-        this.tipoMembresia = tipoMembresia;
+    public Date getMembresiaVencimiento() {
+        return membresiaVencimiento;
     }
 
-    public String getContacto() {
-        return contacto;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public ClienteDTO(String cedula, String nombre, String tipoMembresia, String contacto) {
-        this.cedula = cedula;
+    
+    
+    public ClienteDTO(int id, String nombre, Date fechaNacimiento, String correo, String telefono, String tipoMembresia, Date membresiaVencimiento) {
+        this.id = id;
         this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+        this.correo = correo;
+        this.telefono = telefono;
         this.tipoMembresia = tipoMembresia;
-        this.contacto = contacto;
+        this.membresiaVencimiento = membresiaVencimiento;
     }
 
-    public ClienteDTO() {
-    }
-
-    @Override
-    public String toString() {
-        return "ClienteDTO{"
-                + "cedula='" + cedula + '\''
-                + ", nombre='" + nombre + '\''
-                + ", tipoMembresia='" + tipoMembresia + '\''
-                + ", contacto='" + contacto + '\''
-                + '}';
-    }
 }

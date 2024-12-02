@@ -12,60 +12,48 @@ import java.util.Date;
  */
 public class ClaseDTO {
 
-    private String tipoClase;
-    private Date horario;
-    private String entrenador;
-    private int capacidadMaxima;
+     private int id;
+    private final String tipoClase;
+    private final Date horario;
+    private final int idEntrenador;
+    private final int capacidadMaxima;
+
+
+    public int getId() {
+        return id;
+    }
 
     public String getTipoClase() {
         return tipoClase;
-    }
-
-    public void setTipoClase(String tipoClase) {
-        this.tipoClase = tipoClase;
     }
 
     public Date getHorario() {
         return horario;
     }
 
-    public void setHorario(Date horario) {
-        this.horario = horario;
+    public int getIdEntrenador() {
+        return idEntrenador;
     }
 
-    public String getEntrenador() {
-        return entrenador;
-    }
-
-    public void setEntrenador(String entrenador) {
-        this.entrenador = entrenador;
-    }
 
     public int getCapacidadMaxima() {
         return capacidadMaxima;
     }
 
-    public void setCapacidadMaxima(int capacidadMaxima) {
-        this.capacidadMaxima = capacidadMaxima;
-    }
 
-    public ClaseDTO(String tipoClase, Date horario, String entrenador, int capacidadMaxima) {
+    public ClaseDTO( String tipoClase, Date horario, int idEntrenador, int capacidadMaxima) {
         this.tipoClase = tipoClase;
         this.horario = horario;
-        this.entrenador = entrenador;
+        this.idEntrenador = idEntrenador;
         this.capacidadMaxima = capacidadMaxima;
     }
 
-    public ClaseDTO() {
+    public ClaseDTO(int id, String tipoClase, Date horario, int idEntrenador, int capacidadMaxima) {
+        this.id = id;
+        this.tipoClase = tipoClase;
+        this.horario = horario;
+        this.idEntrenador = idEntrenador;
+        this.capacidadMaxima = capacidadMaxima;
     }
-
-    @Override
-    public String toString() {
-        return "ClaseDTO{"
-                + "tipoClase='" + tipoClase + '\''
-                + ", horario=" + horario
-                + ", entrenador='" + entrenador + '\''
-                + ", capacidadMaxima=" + capacidadMaxima
-                + '}';
-    }
+    
 }

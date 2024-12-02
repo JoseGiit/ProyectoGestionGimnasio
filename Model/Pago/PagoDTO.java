@@ -12,52 +12,34 @@ import java.util.Date;
  */
 public class PagoDTO {
 
-    private int idCliente;
-    private Date fecha;
-    private double subtotal;
-    private double impuesto;
-    private double total;
+   
+    private int id;
+    private final int idCliente;
+    private final Date fecha;
+    private final double subtotal;
+    private final double impuesto;
+    private final double total;
 
+   
+    public int getId() {
+        return id;
+    }
     public int getIdCliente() {
         return idCliente;
     }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
     public Date getFecha() {
         return fecha;
     }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
     public double getSubtotal() {
         return subtotal;
     }
-
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-
     public double getImpuesto() {
         return impuesto;
     }
-
-    public void setImpuesto(double impuesto) {
-        this.impuesto = impuesto;
-    }
-
     public double getTotal() {
         return total;
     }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
+   
     public PagoDTO(int idCliente, Date fecha, double subtotal, double impuesto, double total) {
         this.idCliente = idCliente;
         this.fecha = fecha;
@@ -66,17 +48,12 @@ public class PagoDTO {
         this.total = total;
     }
 
-    public PagoDTO() {
-    }
-
-    @Override
-    public String toString() {
-        return "PagoDTO{"
-                + "idCliente=" + idCliente
-                + ", fecha=" + fecha
-                + ", subtotal=" + subtotal
-                + ", impuesto=" + impuesto
-                + ", total=" + total
-                + '}';
-    }
+    public PagoDTO(int id, int idCliente, Date fecha, double subtotal, double impuesto, double total) {
+        this.id = id;
+        this.idCliente = idCliente;
+        this.fecha = fecha;
+        this.subtotal = subtotal;
+        this.impuesto = impuesto;
+        this.total = total;
+    }    
 }

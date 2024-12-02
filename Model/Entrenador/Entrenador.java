@@ -22,10 +22,6 @@ public class Entrenador {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -50,8 +46,7 @@ public class Entrenador {
         this.especialidades = especialidades;
     }
 
-    public Entrenador(int id, String nombre, String contacto, String especialidades) {
-        this.id = id;
+    public Entrenador( String nombre, String contacto, String especialidades) {
         this.nombre = nombre;
         this.contacto = contacto;
         this.especialidades = especialidades;

@@ -13,10 +13,10 @@ import java.util.Date;
 public class Cliente {
 
     private int id;
-    private String cedula;
     private String nombre;
     private Date fechaNacimiento;
-    private String contacto;
+    private String correo;
+    private String telefono;
     private String tipoMembresia;
     private Date membresiaVencimiento;
 
@@ -26,14 +26,6 @@ public class Cliente {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -52,13 +44,6 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getContacto() {
-        return contacto;
-    }
-
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
-    }
 
     public String getTipoMembresia() {
         return tipoMembresia;
@@ -76,13 +61,33 @@ public class Cliente {
         this.membresiaVencimiento = membresiaVencimiento;
     }
 
-    public Cliente(int id, String cedula, String nombre, Date fechaNacimiento, String contacto, String tipoMembresia, Date membresiaVencimiento) {
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    
+    
+    public Cliente(int id, String nombre, Date fechaNacimiento, String correo, String telefono, String tipoMembresia, Date membresiaVencimiento) {
         this.id = id;
-        this.cedula = cedula;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
-        this.contacto = contacto;
+        this.correo = correo;
+        this.telefono = telefono;
         this.tipoMembresia = tipoMembresia;
         this.membresiaVencimiento = membresiaVencimiento;
     }
+
+   
 }
