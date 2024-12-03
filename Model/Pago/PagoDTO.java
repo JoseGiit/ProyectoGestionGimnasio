@@ -15,9 +15,7 @@ public class PagoDTO {
     private int id;
     private final int idCliente;
     private final Date fecha;
-    private final double subtotal;
-    private final double impuesto;
-    private final double total;
+ 
 
     public int getId() {
         return id;
@@ -31,32 +29,17 @@ public class PagoDTO {
         return fecha;
     }
 
-    public double getSubtotal() {
-        return subtotal;
-    }
 
-    public double getImpuesto() {
-        return impuesto;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public PagoDTO(int idCliente, Date fecha, double subtotal, double impuesto, double total) {
+    public PagoDTO(int idCliente, Date fecha) {
         this.idCliente = idCliente;
         this.fecha = fecha;
-        this.subtotal = subtotal;
-        this.impuesto = impuesto;
-        this.total = total;
+        
     }
 
-    public PagoDTO(int id, int idCliente, Date fecha, double subtotal, double impuesto, double total) {
+    public PagoDTO(int id, int idCliente, Date fecha) {
         this.id = id;
         this.idCliente = idCliente;
         this.fecha = fecha;
-        this.subtotal = subtotal;
-        this.impuesto = impuesto;
-        this.total = total;
+
     }
 }

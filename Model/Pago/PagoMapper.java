@@ -4,8 +4,13 @@
  */
 package Model.Pago;
 
+import Model.Cliente.ClienteDAO;
+import Model.Cliente.ClienteMapper;
 import Model.Mapper.Mapper;
-
+import DataBase.DataBaseConnection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author jdarg
@@ -17,40 +22,40 @@ public class PagoMapper implements Mapper<Pago, PagoDTO> {
 if (ent.getId()>0){
         return new PagoDTO(
                 ent.getId(), 
-                ent.getIdCliente(),
-                ent.getFecha(),
-                ent.getSubtotal(),
-                ent.getImpuesto(),
-                ent.getTotal()
+                ent.getCliente().getId(),
+                ent.getFecha()
+              
         );
 }
   return new PagoDTO(
-                ent.getIdCliente(),
-                ent.getFecha(),
-                ent.getSubtotal(),
-                ent.getImpuesto(),
-                ent.getTotal()
+                ent.getCliente().getId(),
+                ent.getFecha()
+              
         );
     }
 
     @Override
     public Pago toEnt(PagoDTO dto) {
    if(dto.getId()>0){
-        return new Pago(
-                dto.getId(),
-                dto.getIdCliente(),
-                dto.getFecha(),
-                dto.getSubtotal(),
-                dto.getImpuesto(),
-                dto.getTotal()
-        );
+       try {
+           return new Pago(
+                   dto.getId(),
+                   new ClienteMapper().toEnt(new ClienteDAO(DataBaseConnection.getConnection()).read(dto.getIdCliente())),
+                   dto.getFecha()
+                   
+           );
+       } catch (SQLException ex) {
+           Logger.getLogger(PagoMapper.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
-       return new Pago(
-                dto.getIdCliente(),
-                dto.getFecha(),
-                dto.getSubtotal(),
-                dto.getImpuesto(),
-                dto.getTotal()
-        );
+        try {
+            return new Pago(
+                    new ClienteMapper().toEnt(new ClienteDAO(DataBaseConnection.getConnection()).read(dto.getIdCliente())),
+                    dto.getFecha()
+            );
+        } catch (SQLException ex) {
+            Logger.getLogger(PagoMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

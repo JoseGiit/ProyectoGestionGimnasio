@@ -14,19 +14,16 @@ import java.sql.SQLException;
  */
 public class DataBaseConnection {
 
-    public class DatabaseConnection {
+    private static final String URL = "jdbc:mysql://localhost:3306/gimnasio_db";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
 
-        private static final String URL = "jdbc:mysql://localhost:3306/gimnasio_db";
-        private static final String USER = "root";
-        private static final String PASSWORD = "";
-
-        public static Connection getConnection() throws SQLException {
-            try {
-                return DriverManager.getConnection(URL, USER, PASSWORD);
-            } catch (SQLException e) {
-                System.err.println("Error al conectar con la base de datos: " + e.getMessage());
-                throw e;
-            }
+    public static Connection getConnection() throws SQLException {
+        try {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException e) {
+            System.err.println("Error al conectar con la base de datos: " + e.getMessage());
+            throw e;
         }
     }
 

@@ -4,6 +4,7 @@
  */
 package Model.Pago;
 
+import Model.Cliente.Cliente;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
 public class Pago {
 
     private int id;
-    private int idCliente;
+    private Cliente cliente;
     private Date fecha;
     private double subtotal;
     private double impuesto;
@@ -26,64 +27,54 @@ public class Pago {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
     public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
     public double getSubtotal() {
         return subtotal;
-    }
-
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
     }
 
     public double getImpuesto() {
         return impuesto;
     }
 
-    public void setImpuesto(double impuesto) {
-        this.impuesto = impuesto;
-    }
-
     public double getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public Pago(int id, Cliente cliente, Date fecha, double subtotal, double impuesto, double total) {
+        this.id = id;
+        this.cliente = cliente;
+        this.fecha = fecha;
+        this.subtotal = subtotal;
+        this.impuesto = impuesto;
         this.total = total;
     }
 
-    public Pago(int id, int idCliente, Date fecha, double subtotal, double impuesto, double total) {
-        this.id = id;
-        this.idCliente = idCliente;
+    public Pago(Cliente cliente, Date fecha, double subtotal, double impuesto, double total) {
+
+        this.cliente = cliente;
         this.fecha = fecha;
         this.subtotal = subtotal;
         this.impuesto = impuesto;
         this.total = total;
     }
-       public Pago( int idCliente, Date fecha, double subtotal, double impuesto, double total) {
- 
-        this.idCliente = idCliente;
+
+    public Pago(int id, Cliente cliente, Date fecha) {
+        this.id = id;
+        this.cliente = cliente;
         this.fecha = fecha;
-        this.subtotal = subtotal;
-        this.impuesto = impuesto;
-        this.total = total;
+
+    }
+    
+     public Pago(Cliente cliente, Date fecha) {
+        this.cliente = cliente;
+        this.fecha = fecha;
+
     }
 }

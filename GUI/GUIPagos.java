@@ -67,10 +67,8 @@ public class GUIPagos extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         AddLbl = new javax.swing.JLabel();
         buscarLbl = new javax.swing.JLabel();
-        ActualizarLbl = new javax.swing.JLabel();
         ListoLbl = new javax.swing.JButton();
         CancelLbl = new javax.swing.JButton();
-        ActualizarLbl1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         CedulaLbl = new javax.swing.JLabel();
         idpagotxt = new javax.swing.JTextField();
@@ -129,11 +127,13 @@ public class GUIPagos extends javax.swing.JInternalFrame {
         jPanel4.setBackground(new java.awt.Color(33, 37, 41));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Opciones");
 
         AddLbl.setBackground(new java.awt.Color(255, 255, 255));
         AddLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        AddLbl.setForeground(new java.awt.Color(255, 255, 255));
         AddLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-new-24.png"))); // NOI18N
         AddLbl.setText("Agregar");
         AddLbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,21 +144,12 @@ public class GUIPagos extends javax.swing.JInternalFrame {
 
         buscarLbl.setBackground(new java.awt.Color(255, 255, 255));
         buscarLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        buscarLbl.setForeground(new java.awt.Color(255, 255, 255));
         buscarLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-google-web-search-24.png"))); // NOI18N
         buscarLbl.setText("Buscar");
         buscarLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buscarLblMouseClicked(evt);
-            }
-        });
-
-        ActualizarLbl.setBackground(new java.awt.Color(255, 255, 255));
-        ActualizarLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        ActualizarLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-crear-nuevo-24.png"))); // NOI18N
-        ActualizarLbl.setText("Editar");
-        ActualizarLbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ActualizarLblMouseClicked(evt);
             }
         });
 
@@ -190,16 +181,6 @@ public class GUIPagos extends javax.swing.JInternalFrame {
             }
         });
 
-        ActualizarLbl1.setBackground(new java.awt.Color(255, 255, 255));
-        ActualizarLbl1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        ActualizarLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-cancelar-24.png"))); // NOI18N
-        ActualizarLbl1.setText("Cancelar");
-        ActualizarLbl1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ActualizarLbl1MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -208,7 +189,6 @@ public class GUIPagos extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 2, Short.MAX_VALUE))
-            .addComponent(ActualizarLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ListoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,21 +196,16 @@ public class GUIPagos extends javax.swing.JInternalFrame {
                 .addComponent(CancelLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(48, Short.MAX_VALUE))
             .addComponent(buscarLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(ActualizarLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(15, 15, 15)
                 .addComponent(AddLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(buscarLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(ActualizarLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(ActualizarLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ListoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CancelLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -345,13 +320,14 @@ public class GUIPagos extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(subtotaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(FechaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(FechaNLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                            .addComponent(CedulaLbl)
                                             .addComponent(CorreoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(IdClientetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(FechaNLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(idpagotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(CedulaLbl))
+                                            .addComponent(FechaTxt)
+                                            .addComponent(IdClientetxt)
+                                            .addComponent(idpagotxt))
+                                        .addGap(41, 41, 41)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(98, 98, 98)
@@ -375,7 +351,7 @@ public class GUIPagos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 4, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
@@ -390,7 +366,6 @@ public class GUIPagos extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CorreoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(FechaNLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
@@ -476,27 +451,6 @@ public class GUIPagos extends javax.swing.JInternalFrame {
         this.idpagotxt.setEnabled(true);
         this.idpagotxt.setVisible(true);
     }//GEN-LAST:event_buscarLblMouseClicked
-
-    private void ActualizarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarLblMouseClicked
-        // TODO add your handling code here:
-      DisableorActiveAll(false);
-        this.CedulaLbl.setEnabled(true);
-         this.CedulaLbl.setVisible(true);
-          this.CedulaLbl.setText("Numero de Envio a Entregar");
-           this.idpagotxt.setEditable(true);
-        this.idpagotxt.setEnabled(true);
-        this.idpagotxt.setVisible(true);
-    }//GEN-LAST:event_ActualizarLblMouseClicked
-
-    private void ActualizarLbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarLbl1MouseClicked
-          DisableorActiveAll(false);
-        this.CedulaLbl.setEnabled(true);
-         this.CedulaLbl.setVisible(true);
-          this.CedulaLbl.setText("Numero de Envio a Cancelar");
-           this.idpagotxt.setEditable(true);
-        this.idpagotxt.setEnabled(true);
-        this.idpagotxt.setVisible(true);
-    }//GEN-LAST:event_ActualizarLbl1MouseClicked
 
     private void CancelLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelLblMouseClicked
 this.ClearTxt();
@@ -705,8 +659,6 @@ public void ClearTxt(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ActualizarLbl;
-    private javax.swing.JLabel ActualizarLbl1;
     private javax.swing.JLabel AddLbl;
     private javax.swing.JButton CancelLbl;
     private javax.swing.JLabel CedulaLbl;
