@@ -33,15 +33,14 @@ public class EntrenadorDAO extends Dao<EntrenadorDTO> {
     @Override
     public EntrenadorDTO read(Object id) throws SQLException {
         String query = "call sp_leer_entrenadores()";
-        try (CallableStatement stmt = connection.prepareCall(query);
-             ResultSet rs = stmt.executeQuery()) {
+        try (CallableStatement stmt = connection.prepareCall(query); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 if (rs.getInt("id") == (int) id) {
                     return new EntrenadorDTO(
-                        rs.getInt("id"),
-                        rs.getString("nombre"),
-                        rs.getString("contacto"),
-                        rs.getString("especialidades")
+                            rs.getInt("id"),
+                            rs.getString("nombre"),
+                            rs.getString("contacto"),
+                            rs.getString("especialidades")
                     );
                 }
             }
@@ -53,14 +52,13 @@ public class EntrenadorDAO extends Dao<EntrenadorDTO> {
     public List<EntrenadorDTO> readAll() throws SQLException {
         List<EntrenadorDTO> entrenadores = new ArrayList<>();
         String query = "call sp_leer_entrenadores()";
-        try (CallableStatement stmt = connection.prepareCall(query);
-             ResultSet rs = stmt.executeQuery()) {
+        try (CallableStatement stmt = connection.prepareCall(query); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 entrenadores.add(new EntrenadorDTO(
-                    rs.getInt("id"),
-                    rs.getString("nombre"),
-                    rs.getString("contacto"),
-                    rs.getString("especialidades")
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("contacto"),
+                        rs.getString("especialidades")
                 ));
             }
         }

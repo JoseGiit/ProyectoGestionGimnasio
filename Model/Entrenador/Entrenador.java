@@ -46,7 +46,7 @@ public class Entrenador {
         this.especialidades = especialidades;
     }
 
-    public Entrenador( String nombre, String contacto, String especialidades) {
+    public Entrenador(String nombre, String contacto, String especialidades) {
         this.nombre = nombre;
         this.contacto = contacto;
         this.especialidades = especialidades;

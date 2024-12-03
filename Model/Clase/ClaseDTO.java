@@ -12,12 +12,11 @@ import java.util.Date;
  */
 public class ClaseDTO {
 
-     private int id;
+    private int id;
     private final String tipoClase;
     private final Date horario;
     private final int idEntrenador;
     private final int capacidadMaxima;
-
 
     public int getId() {
         return id;
@@ -35,13 +34,11 @@ public class ClaseDTO {
         return idEntrenador;
     }
 
-
     public int getCapacidadMaxima() {
         return capacidadMaxima;
     }
 
-
-    public ClaseDTO( String tipoClase, Date horario, int idEntrenador, int capacidadMaxima) {
+    public ClaseDTO(String tipoClase, Date horario, int idEntrenador, int capacidadMaxima) {
         this.tipoClase = tipoClase;
         this.horario = horario;
         this.idEntrenador = idEntrenador;
@@ -55,5 +52,5 @@ public class ClaseDTO {
         this.idEntrenador = idEntrenador;
         this.capacidadMaxima = capacidadMaxima;
     }
-    
+
 }

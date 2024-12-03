@@ -44,7 +44,6 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-
     public String getTipoMembresia() {
         return tipoMembresia;
     }
@@ -77,8 +76,6 @@ public class Cliente {
         return telefono;
     }
 
-    
-    
     public Cliente(int id, String nombre, Date fechaNacimiento, String correo, String telefono, String tipoMembresia, Date membresiaVencimiento) {
         this.id = id;
         this.nombre = nombre;
@@ -89,5 +86,4 @@ public class Cliente {
         this.membresiaVencimiento = membresiaVencimiento;
     }
 
-   
 }

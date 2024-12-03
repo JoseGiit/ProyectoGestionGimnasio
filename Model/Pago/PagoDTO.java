@@ -12,7 +12,6 @@ import java.util.Date;
  */
 public class PagoDTO {
 
-   
     private int id;
     private final int idCliente;
     private final Date fecha;
@@ -20,26 +19,30 @@ public class PagoDTO {
     private final double impuesto;
     private final double total;
 
-   
     public int getId() {
         return id;
     }
+
     public int getIdCliente() {
         return idCliente;
     }
+
     public Date getFecha() {
         return fecha;
     }
+
     public double getSubtotal() {
         return subtotal;
     }
+
     public double getImpuesto() {
         return impuesto;
     }
+
     public double getTotal() {
         return total;
     }
-   
+
     public PagoDTO(int idCliente, Date fecha, double subtotal, double impuesto, double total) {
         this.idCliente = idCliente;
         this.fecha = fecha;
@@ -55,5 +58,5 @@ public class PagoDTO {
         this.subtotal = subtotal;
         this.impuesto = impuesto;
         this.total = total;
-    }    
+    }
 }

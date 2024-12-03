@@ -21,7 +21,7 @@ public class PagoDAO extends DaoIntangible<PagoDTO> {
 
     @Override
     public boolean create(PagoDTO pago) throws SQLException {
-        String query = "call sp_crear_pago(?, ?, ?, ?, ?)}"; 
+        String query = "call sp_crear_pago(?, ?, ?, ?, ?)}";
         try (CallableStatement stmt = connection.prepareCall(query)) {
             stmt.setInt(1, pago.getIdCliente());
             stmt.setTimestamp(2, new Timestamp(pago.getFecha().getTime()));
@@ -35,16 +35,15 @@ public class PagoDAO extends DaoIntangible<PagoDTO> {
     @Override
     public PagoDTO read(Object id) throws SQLException {
         String query = "call sp_leer_pagos()";
-        try (CallableStatement stmt = connection.prepareCall(query);
-             ResultSet rs = stmt.executeQuery()) {
+        try (CallableStatement stmt = connection.prepareCall(query); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 if (rs.getInt("id") == (int) id) {
                     return new PagoDTO(
-                        rs.getInt("id_cliente"),
-                        rs.getTimestamp("fecha"),
-                        rs.getDouble("subtotal"),
-                        rs.getDouble("impuesto"),
-                        rs.getDouble("total")
+                            rs.getInt("id_cliente"),
+                            rs.getTimestamp("fecha"),
+                            rs.getDouble("subtotal"),
+                            rs.getDouble("impuesto"),
+                            rs.getDouble("total")
                     );
                 }
             }
@@ -56,18 +55,17 @@ public class PagoDAO extends DaoIntangible<PagoDTO> {
     public List<PagoDTO> readAll() throws SQLException {
         List<PagoDTO> pagos = new ArrayList<>();
         String query = "call sp_leer_pagos()}";
-        try (CallableStatement stmt = connection.prepareCall(query);
-             ResultSet rs = stmt.executeQuery()) {
+        try (CallableStatement stmt = connection.prepareCall(query); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 pagos.add(new PagoDTO(
-                    rs.getInt("id_cliente"),
-                    rs.getTimestamp("fecha"),
-                    rs.getDouble("subtotal"),
-                    rs.getDouble("impuesto"),
-                    rs.getDouble("total")
+                        rs.getInt("id_cliente"),
+                        rs.getTimestamp("fecha"),
+                        rs.getDouble("subtotal"),
+                        rs.getDouble("impuesto"),
+                        rs.getDouble("total")
                 ));
             }
         }
         return pagos;
-    } 
+    }
 }

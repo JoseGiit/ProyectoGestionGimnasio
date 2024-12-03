@@ -23,16 +23,14 @@ public class ClienteDTO {
     public int getId() {
         return id;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
 
-
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
-
 
     public String getTipoMembresia() {
         return tipoMembresia;
@@ -50,8 +48,6 @@ public class ClienteDTO {
         return telefono;
     }
 
-    
-    
     public ClienteDTO(int id, String nombre, Date fechaNacimiento, String correo, String telefono, String tipoMembresia, Date membresiaVencimiento) {
         this.id = id;
         this.nombre = nombre;

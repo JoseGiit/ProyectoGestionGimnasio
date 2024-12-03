@@ -22,7 +22,7 @@ public class ClaseDAO extends Dao<ClaseDTO> {
 
     @Override
     public boolean create(ClaseDTO clase) throws SQLException {
-        String query = "call sp_crear_clase(?, ?, ?, ?)"; 
+        String query = "call sp_crear_clase(?, ?, ?, ?)";
         try (CallableStatement stmt = connection.prepareCall(query)) {
             stmt.setString(1, clase.getTipoClase());
             stmt.setTimestamp(2, new Timestamp(clase.getHorario().getTime()));
@@ -35,16 +35,15 @@ public class ClaseDAO extends Dao<ClaseDTO> {
     @Override
     public ClaseDTO read(Object id) throws SQLException {
         String query = "call sp_leer_clases()";
-        try (CallableStatement stmt = connection.prepareCall(query);
-             ResultSet rs = stmt.executeQuery()) {
+        try (CallableStatement stmt = connection.prepareCall(query); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 if (rs.getInt("id") == (int) id) {
                     return new ClaseDTO(
-                        rs.getInt("id"),
-                        rs.getString("tipo_clase"),
-                        rs.getTimestamp("horario"),
-                        rs.getInt("id_entrenador"),
-                        rs.getInt("capacidad_maxima")
+                            rs.getInt("id"),
+                            rs.getString("tipo_clase"),
+                            rs.getTimestamp("horario"),
+                            rs.getInt("id_entrenador"),
+                            rs.getInt("capacidad_maxima")
                     );
                 }
             }
@@ -56,15 +55,14 @@ public class ClaseDAO extends Dao<ClaseDTO> {
     public List<ClaseDTO> readAll() throws SQLException {
         List<ClaseDTO> clases = new ArrayList<>();
         String query = "call sp_leer_clases()";
-        try (CallableStatement stmt = connection.prepareCall(query);
-             ResultSet rs = stmt.executeQuery()) {
+        try (CallableStatement stmt = connection.prepareCall(query); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 clases.add(new ClaseDTO(
-                    rs.getInt("id"),
-                    rs.getString("tipo_clase"),
-                    rs.getTimestamp("horario"),
-                    rs.getInt("id_entrenador"),
-                    rs.getInt("capacidad_maxima")
+                        rs.getInt("id"),
+                        rs.getString("tipo_clase"),
+                        rs.getTimestamp("horario"),
+                        rs.getInt("id_entrenador"),
+                        rs.getInt("capacidad_maxima")
                 ));
             }
         }

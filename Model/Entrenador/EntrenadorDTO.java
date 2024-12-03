@@ -10,7 +10,7 @@ package Model.Entrenador;
  */
 public class EntrenadorDTO {
 
-     private int id;
+    private int id;
     private final String nombre;
     private final String contacto;
     private final String especialidades;
@@ -18,12 +18,15 @@ public class EntrenadorDTO {
     public int getId() {
         return id;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public String getContacto() {
         return contacto;
     }
+
     public String getEspecialidades() {
         return especialidades;
     }
@@ -34,7 +37,8 @@ public class EntrenadorDTO {
         this.contacto = contacto;
         this.especialidades = especialidades;
     }
-        public EntrenadorDTO( String nombre, String contacto, String especialidades) {
+
+    public EntrenadorDTO(String nombre, String contacto, String especialidades) {
         this.nombre = nombre;
         this.contacto = contacto;
         this.especialidades = especialidades;
