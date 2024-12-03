@@ -14,8 +14,16 @@ public class EntrenadorMapper implements Mapper<Entrenador, EntrenadorDTO> {
 
     @Override
     public EntrenadorDTO toDTO(Entrenador ent) {
+        
+        if(ent.getId()>0){
         return new EntrenadorDTO(
                 ent.getId(),
+                ent.getNombre(),
+                ent.getContacto(),
+                ent.getEspecialidades()
+        );
+        }
+        return new EntrenadorDTO(
                 ent.getNombre(),
                 ent.getContacto(),
                 ent.getEspecialidades()
@@ -24,8 +32,9 @@ public class EntrenadorMapper implements Mapper<Entrenador, EntrenadorDTO> {
 
     @Override
     public Entrenador toEnt(EntrenadorDTO dto) {
-        if (dto.getId() == 0) {
+        if (dto.getId() > 0) {
             return new Entrenador(
+                    dto.getId(),
                     dto.getNombre(),
                     dto.getContacto(),
                     dto.getEspecialidades()

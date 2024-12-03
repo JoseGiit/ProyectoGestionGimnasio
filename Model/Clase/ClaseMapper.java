@@ -14,11 +14,19 @@ public class ClaseMapper implements Mapper<Clase, ClaseDTO> {
 
     @Override
     public ClaseDTO toDTO(Clase ent) {
+        if(ent.getId()>0){
         return new ClaseDTO(
                 ent.getId(),
                 ent.getTipoClase(),
                 ent.getHorario(),
-                ent.getIdEntrenador(), // Solo pasamos el ID del entrenador
+                ent.getIdEntrenador(), 
+                ent.getCapacidadMaxima()
+        );
+        }
+             return new ClaseDTO(
+                ent.getTipoClase(),
+                ent.getHorario(),
+                ent.getIdEntrenador(), 
                 ent.getCapacidadMaxima()
         );
     }
@@ -26,7 +34,7 @@ public class ClaseMapper implements Mapper<Clase, ClaseDTO> {
     @Override
     public Clase toEnt(ClaseDTO dto) {
 
-        if (dto.getId() == 0) { // si el id es 0, significa que estamos creando una nueva Clase
+        if (dto.getId() > 0) { 
             return new Clase(
                     dto.getId(),
                     dto.getTipoClase(),
@@ -36,7 +44,6 @@ public class ClaseMapper implements Mapper<Clase, ClaseDTO> {
             );
         }
         return new Clase(
-                dto.getId(),
                 dto.getTipoClase(),
                 dto.getHorario(),
                 dto.getIdEntrenador(),

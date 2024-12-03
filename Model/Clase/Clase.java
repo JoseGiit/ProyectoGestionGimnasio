@@ -68,4 +68,10 @@ public class Clase {
         this.idEntrenador = idEntrenador;
         this.capacidadMaxima = capacidadMaxima;
     }
+       public Clase( String tipoClase, Date horario, int idEntrenador, int capacidadMaxima) {
+        this.tipoClase = tipoClase;
+        this.horario = horario;
+        this.idEntrenador = idEntrenador;
+        this.capacidadMaxima = capacidadMaxima;
+    }
 }

@@ -14,9 +14,17 @@ public class PagoMapper implements Mapper<Pago, PagoDTO> {
 
     @Override
     public PagoDTO toDTO(Pago ent) {
-
+if (ent.getId()>0){
         return new PagoDTO(
-                ent.getId(), //  id de Pago está presente
+                ent.getId(), 
+                ent.getIdCliente(),
+                ent.getFecha(),
+                ent.getSubtotal(),
+                ent.getImpuesto(),
+                ent.getTotal()
+        );
+}
+  return new PagoDTO(
                 ent.getIdCliente(),
                 ent.getFecha(),
                 ent.getSubtotal(),
@@ -27,9 +35,17 @@ public class PagoMapper implements Mapper<Pago, PagoDTO> {
 
     @Override
     public Pago toEnt(PagoDTO dto) {
-
+   if(dto.getId()>0){
         return new Pago(
                 dto.getId(),
+                dto.getIdCliente(),
+                dto.getFecha(),
+                dto.getSubtotal(),
+                dto.getImpuesto(),
+                dto.getTotal()
+        );
+    }
+       return new Pago(
                 dto.getIdCliente(),
                 dto.getFecha(),
                 dto.getSubtotal(),

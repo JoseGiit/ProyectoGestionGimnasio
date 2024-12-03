@@ -51,5 +51,11 @@ public class Entrenador {
         this.contacto = contacto;
         this.especialidades = especialidades;
     }
+     public Entrenador(int id,String nombre, String contacto, String especialidades) {
+         this.id = id;
+        this.nombre = nombre;
+        this.contacto = contacto;
+        this.especialidades = especialidades;
+    }
 
 }

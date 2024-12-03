@@ -78,4 +78,12 @@ public class Pago {
         this.impuesto = impuesto;
         this.total = total;
     }
+       public Pago( int idCliente, Date fecha, double subtotal, double impuesto, double total) {
+ 
+        this.idCliente = idCliente;
+        this.fecha = fecha;
+        this.subtotal = subtotal;
+        this.impuesto = impuesto;
+        this.total = total;
+    }
 }
