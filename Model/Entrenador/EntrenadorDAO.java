@@ -70,8 +70,8 @@ public class EntrenadorDAO extends Dao<EntrenadorDTO> {
         String query = "call sp_actualizar_entrenador(?, ?, ?)";
         try (CallableStatement stmt = connection.prepareCall(query)) {
             stmt.setInt(1, entrenador.getId());
-            stmt.setString(3, entrenador.getContacto());
-            stmt.setString(4, entrenador.getEspecialidades());
+            stmt.setString(2, entrenador.getContacto());
+            stmt.setString(3, entrenador.getEspecialidades());
             return stmt.executeUpdate() > 0;
         }
     }
