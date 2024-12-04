@@ -1,35 +1,32 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
 
-//import Empleados.Empleado;
-//import RutasEntrega.ListaRutasEntrega;
-//import RutasEntrega.RutaEntrega;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
-import java.util.Set;
+import DataBase.DataBaseConnection;
+import Model.Cliente.ClienteDAO;
+import Model.Usuario.UsuarioDAO;
+import Model.Usuario.UsuarioDTO;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
-
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author PC
+ * @author Saliim
  */
-public class GUILogin extends javax.swing.JInternalFrame {
-/**
-     * Creates new form FrmRutaEntrega
+public class GUILogin1 extends javax.swing.JFrame {
+
+    /**
+     * Creates new form GUILogin1
      */
-//    private ListaRutasEntrega listR;
-//    public FrmRutaEntrega() {
-//        initComponents();
-//         DisableorActiveAll(false);
-//          listR= ListaRutasEntrega.getInstance();
-    
+    UsuarioDAO dao;
+    public GUILogin1() throws SQLException {
+        initComponents();
+         dao = new UsuarioDAO(DataBaseConnection.getConnection());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,15 +43,14 @@ public class GUILogin extends javax.swing.JInternalFrame {
         CodigoLbl = new javax.swing.JLabel();
         UsuarioTxt = new javax.swing.JTextField();
         NombreLbl = new javax.swing.JLabel();
-        ContraseñaTxt = new javax.swing.JTextField();
         DestinosLbl = new javax.swing.JLabel();
         RolesBox = new javax.swing.JComboBox<>();
         SiguienteLbl = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        ContraseñaTxt = new javax.swing.JPasswordField();
 
-        setPreferredSize(new java.awt.Dimension(840, 421));
-        setRequestFocusEnabled(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -63,7 +59,6 @@ public class GUILogin extends javax.swing.JInternalFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-ruta-24.png"))); // NOI18N
         jLabel1.setText("Login");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -99,15 +94,6 @@ public class GUILogin extends javax.swing.JInternalFrame {
         NombreLbl.setForeground(new java.awt.Color(255, 255, 255));
         NombreLbl.setText("Contraseña");
 
-        ContraseñaTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        ContraseñaTxt.setForeground(new java.awt.Color(204, 204, 204));
-        ContraseñaTxt.setBorder(null);
-        ContraseñaTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContraseñaTxtActionPerformed(evt);
-            }
-        });
-
         DestinosLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         DestinosLbl.setForeground(new java.awt.Color(255, 255, 255));
         DestinosLbl.setText("Roles");
@@ -120,7 +106,6 @@ public class GUILogin extends javax.swing.JInternalFrame {
 
         SiguienteLbl.setBackground(new java.awt.Color(46, 62, 78));
         SiguienteLbl.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        SiguienteLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-casilla-de-verificación-marcada-24.png"))); // NOI18N
         SiguienteLbl.setText("Siguiente");
         SiguienteLbl.setBorderPainted(false);
         SiguienteLbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -151,10 +136,10 @@ public class GUILogin extends javax.swing.JInternalFrame {
                                 .addComponent(UsuarioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(CodigoLbl))
                         .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                             .addComponent(NombreLbl)
-                            .addComponent(ContraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(ContraseñaTxt)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(193, 193, 193)
                         .addComponent(SiguienteLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -175,10 +160,10 @@ public class GUILogin extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NombreLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CodigoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ContraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UsuarioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UsuarioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ContraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,119 +195,81 @@ public class GUILogin extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UsuarioTxtActionPerformed
 
-    private void ContraseñaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ContraseñaTxtActionPerformed
-
     private void SiguienteLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SiguienteLblMouseClicked
-//         if(!this.CodigoTxt.getText().isEmpty()&&!this.NombreTxt.getText().isEmpty()&&!this.DescripcionTxt.getText().isEmpty()){
-//           
-//            
-//            RutaEntrega emp = new RutaEntrega(this.CodigoTxt.getText(),
-//           this.NombreTxt.getText(),this.DescripcionTxt.getText());
-//            listR.agregarRuta(emp);
-//             System.out.println( emp.getDescripcion());
-//            emp.agregarDestino(addDestinoTxt.getText());
-//            DestinoBox.addItem(addDestinoTxt.getText());
-//               clearTxt();
-//                DisableorActiveAll(false);
-//             
-//        }else if(this.NombreLbl.getText().equals("Descripcion:")){
-//               if(!NombreTxt.getText().equals("")){
-//               listR.buscarRuta(this.CodigoTxt.getText()).setDescripcion(this.NombreTxt.getText());
-//               }
-//               if(!addDestinoTxt.getText().equals("")){
-//              listR.buscarRuta(this.CodigoTxt.getText()).agregarDestino(addDestinoTxt.getText());
-//                DestinoBox.addItem(addDestinoTxt.getText());
-//               }
-//                DisableorActiveAll(false);
-//                clearTxt();
-//                
-//        }else if(this.CodigoLbl.getText().equals("Ingrese Codigo para buscar:")){
-//           
-//            if(listR.buscarRuta(this.CodigoTxt.getText())!=null){
-//            RutaEntrega emp = listR.buscarRuta(this.CodigoTxt.getText());
-//            actualizarComboBox(emp.getDestinos());
-//            this.CodigoTxt.setText(emp.getCodigo());
-//            this.NombreTxt.setText(emp.getNombre());
-//            this.DescripcionTxt.setText(emp.getDescripcion());
-//            DisableorActiveAll(true);
-//            agregarDestinoLbl.setEnabled(false);
-//            agregarDestinoLbl.setVisible(false);
-//            addDestinoTxt.setEnabled(false);
-//            addDestinoTxt.setVisible(false);          
-//            
-//}else{
-//                  JOptionPane.showMessageDialog(null, "Codigo correcto o inexistente intente ", "informacion incorrecta", JOptionPane.WARNING_MESSAGE); 
-//              }
-//          
-//        }else if(this.CodigoLbl.getText().equals("Ingrese Codigo para eliminar:")){
-//          
-//            if(listR.buscarRuta(this.CodigoTxt.getText())!=null){
-//            listR.eliminarRuta(this.CodigoTxt.getText());
-//            }else{
-//                JOptionPane.showMessageDialog(null, "La ruta no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE); 
-//            }
-//        }else{
-//               if(listR.buscarRuta(this.CodigoTxt.getText())!=null){
-//                   listR.buscarRuta(this.CodigoTxt.getText()).borrarDestinoString(String.valueOf(DestinoBox.getSelectedItem()));
-//                    }else{
-//                    JOptionPane.showMessageDialog(null, "La ruta no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE); 
-//               }
-//        }
+        String username = UsuarioTxt.getText();
+        String password = String.valueOf(ContraseñaTxt.getPassword());
+        String selectedRole = (String) RolesBox.getSelectedItem();
+        try {
+
+            UsuarioDTO usuario = dao.validateUser(username, password, selectedRole);
+
+            if (usuario != null) {
+                // Usuario válido
+                if ("Administrador".equals(usuario.getRol())) {
+                    GuiMenu guiMenu = new GuiMenu();
+                    guiMenu.setVisible(true);
+                } else if ("Entrenador".equals(usuario.getRol())) {
+                    GuiMenuEntrenador guiMenuEntrenador = new GuiMenuEntrenador();
+                    guiMenuEntrenador.setVisible(true);
+                }
+                // Cerrar la ventana actual
+                this.dispose();
+            } else {
+                // Usuario inválido
+                JOptionPane.showMessageDialog(null, "Credenciales inválidas. Por favor, inténtalo de nuevo.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos: " + ex.getMessage());
+        }
+
     }//GEN-LAST:event_SiguienteLblMouseClicked
 
     private void SiguienteLblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteLblActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SiguienteLblActionPerformed
 
-public void DisableorActiveAll(boolean x){
-//    this.CodigoLbl.setText("Codigo:");
-//    this.NombreLbl.setText("Nombre:");
-//    this.CodigoLbl.setEnabled(x);
-//    this.CodigoLbl.setVisible(x);
-//    this.usuariosTxt.setEnabled(x);
-//    this.usuariosTxt.setVisible(x);
-//    this.NombreLbl.setEnabled(x);
-//    this.NombreLbl.setVisible(x);
-//    this.contraseñaTxt.setEnabled(x);
-//    this.contraseñaTxt.setVisible(x);
-//    this.DescripcionLbl.setEnabled(x);
-//    this.DescripcionLbl.setVisible(x);
-//    this.DescripcionTxt.setEnabled(x);
-//    this.DescripcionTxt.setVisible(x);
-//     this.DestinosLbl.setEnabled(x);
-//    this.DestinosLbl.setVisible(x);
-//    this.RolesBox.setEnabled(x);
-//    this.RolesBox.setVisible(x);
-//    this.agregarDestinoLbl.setEnabled(x);
-//    this.agregarDestinoLbl.setVisible(x);
-//    this.addDestinoTxt.setEnabled(x);
-//    this.addDestinoTxt.setVisible(x);
-//    DestinosLbl.setEnabled(x);
-//    DestinosLbl.setVisible(x);
-  
-}
- public void actualizarComboBox(Set<String> destinos) {
-        // Limpiar el combo box
-        this.RolesBox.removeAllItems();
-
-        // Recorrer la lista de destinos y agregarlos al combo box
-        for (String destino : destinos) {
-            RolesBox.addItem(destino);
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GUILogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GUILogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GUILogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GUILogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new GUILogin1().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(GUILogin1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }
-public void clearTxt(){
-    UsuarioTxt.setText("");
-    ContraseñaTxt.setText("");
-//    DescripcionTxt.setText("");
-//    addDestinoTxt.setText("");
-   
-   
-}
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CodigoLbl;
-    private javax.swing.JTextField ContraseñaTxt;
+    private javax.swing.JPasswordField ContraseñaTxt;
     private javax.swing.JLabel DestinosLbl;
     private javax.swing.JLabel NombreLbl;
     private javax.swing.JComboBox<String> RolesBox;

@@ -89,4 +89,24 @@ public class UsuarioDAO extends Dao<UsuarioDTO> {
     public boolean validatePk(int id) throws SQLException {
         return read(id) != null;
     }
+    
+    public UsuarioDTO validateUser(String username, String password, String role) throws SQLException {
+    String query = "call sp_leer_usuarios()";
+    try (CallableStatement stmt = connection.prepareCall(query); ResultSet rs = stmt.executeQuery()) {
+        while (rs.next()) {
+            if (rs.getString("username").equals(username)
+                    && rs.getString("password_hash").equals(password) // Comparación directa
+                    && rs.getString("rol").equals(role)) {
+                return new UsuarioDTO(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("password_hash"),
+                        rs.getString("rol")
+                );
+            }
+        }
+    }
+    return null; 
+}
+
 }
