@@ -134,6 +134,7 @@ public class GuiMenu extends javax.swing.JFrame {
         ClasesLbl.setBackground(new java.awt.Color(255, 255, 255));
         ClasesLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         ClasesLbl.setForeground(new java.awt.Color(255, 255, 255));
+        ClasesLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/entrenador.png"))); // NOI18N
         ClasesLbl.setText("Clases");
         ClasesLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -420,7 +421,6 @@ public class GuiMenu extends javax.swing.JFrame {
         // TODO add your handling code here:}
         DeskMenu.setEnabled(false);
         DeskMenu.setVisible(false);
-
         DeskMenu.setEnabled(true);
         DeskMenu.setVisible(true);
         this.frmClases = new GUIClases();

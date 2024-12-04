@@ -14,7 +14,7 @@ public class ClaseDTO {
 
     private int id;
     private final String tipoClase;
-    private final Date horario;
+    private final String horario;
     private final int idEntrenador;
     private final int capacidadMaxima;
 
@@ -26,7 +26,7 @@ public class ClaseDTO {
         return tipoClase;
     }
 
-    public Date getHorario() {
+    public String getHorario() {
         return horario;
     }
 
@@ -38,14 +38,14 @@ public class ClaseDTO {
         return capacidadMaxima;
     }
 
-    public ClaseDTO(String tipoClase, Date horario, int idEntrenador, int capacidadMaxima) {
+    public ClaseDTO(String tipoClase, String horario, int idEntrenador, int capacidadMaxima) {
         this.tipoClase = tipoClase;
         this.horario = horario;
         this.idEntrenador = idEntrenador;
         this.capacidadMaxima = capacidadMaxima;
     }
 
-    public ClaseDTO(int id, String tipoClase, Date horario, int idEntrenador, int capacidadMaxima) {
+    public ClaseDTO(int id, String tipoClase, String horario, int idEntrenador, int capacidadMaxima) {
         this.id = id;
         this.tipoClase = tipoClase;
         this.horario = horario;

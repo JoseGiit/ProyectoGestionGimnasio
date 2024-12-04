@@ -25,7 +25,7 @@ public class ClaseDAO extends Dao<ClaseDTO> {
         String query = "call sp_crear_clase(?, ?, ?, ?)";
         try (CallableStatement stmt = connection.prepareCall(query)) {
             stmt.setString(1, clase.getTipoClase());
-            stmt.setTimestamp(2, new Timestamp(clase.getHorario().getTime()));
+            stmt.setString(2, clase.getHorario());
             stmt.setInt(3, clase.getIdEntrenador());
             stmt.setInt(4, clase.getCapacidadMaxima());
             return stmt.executeUpdate() > 0;
@@ -41,7 +41,7 @@ public class ClaseDAO extends Dao<ClaseDTO> {
                     return new ClaseDTO(
                             rs.getInt("id"),
                             rs.getString("tipo_clase"),
-                            rs.getTimestamp("horario"),
+                            rs.getString("horario"),
                             rs.getInt("id_entrenador"),
                             rs.getInt("capacidad_maxima")
                     );
@@ -60,7 +60,7 @@ public class ClaseDAO extends Dao<ClaseDTO> {
                 clases.add(new ClaseDTO(
                         rs.getInt("id"),
                         rs.getString("tipo_clase"),
-                        rs.getTimestamp("horario"),
+                        rs.getString("horario"),
                         rs.getInt("id_entrenador"),
                         rs.getInt("capacidad_maxima")
                 ));
@@ -75,7 +75,7 @@ public class ClaseDAO extends Dao<ClaseDTO> {
         try (CallableStatement stmt = connection.prepareCall(query)) {
             stmt.setInt(1, clase.getId());
             stmt.setString(2, clase.getTipoClase());
-            stmt.setTimestamp(3, new Timestamp(clase.getHorario().getTime()));
+            stmt.setString(3, clase.getHorario());
             stmt.setInt(4, clase.getIdEntrenador());
             stmt.setInt(5, clase.getCapacidadMaxima());
             return stmt.executeUpdate() > 0;
@@ -89,5 +89,8 @@ public class ClaseDAO extends Dao<ClaseDTO> {
             stmt.setInt(1, (int) id);
             return stmt.executeUpdate() > 0;
         }
+    }
+    public boolean validatePk(int id) throws SQLException{
+        return read(id) != null;
     }
 }

@@ -508,7 +508,7 @@ public class GUICliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buscarLblMouseClicked
 
     private void DeleteLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteLblMouseClicked
-jComboBox1.removeAllItems();
+      jComboBox1.removeAllItems();
         ClearTxt();
         DisableorActiveAll(false);
         this.CedulaLbl.setText("Ingrese la Cedula para eliminar");

@@ -14,7 +14,7 @@ public class Clase {
 
     private int id;
     private String tipoClase;
-    private Date horario;
+    private String horario;
     private int idEntrenador;
     private int capacidadMaxima;
 
@@ -37,11 +37,11 @@ public class Clase {
         this.tipoClase = tipoClase;
     }
 
-    public Date getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Date horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
@@ -61,14 +61,14 @@ public class Clase {
         this.capacidadMaxima = capacidadMaxima;
     }
 
-    public Clase(int id, String tipoClase, Date horario, int idEntrenador, int capacidadMaxima) {
+    public Clase(int id, String tipoClase, String horario, int idEntrenador, int capacidadMaxima) {
         this.id = id;
         this.tipoClase = tipoClase;
         this.horario = horario;
         this.idEntrenador = idEntrenador;
         this.capacidadMaxima = capacidadMaxima;
     }
-       public Clase( String tipoClase, Date horario, int idEntrenador, int capacidadMaxima) {
+       public Clase( String tipoClase, String horario, int idEntrenador, int capacidadMaxima) {
         this.tipoClase = tipoClase;
         this.horario = horario;
         this.idEntrenador = idEntrenador;
