@@ -59,6 +59,7 @@ public class GuiMenu extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton3 = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         ClientesLbl = new javax.swing.JLabel();
@@ -581,6 +582,7 @@ public class GuiMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables
 
     private void actualizarContadores() throws SQLException {

@@ -58,11 +58,13 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton3 = new javax.swing.JButton();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         ClientesLbl = new javax.swing.JLabel();
         EntrenadoresLbl = new javax.swing.JLabel();
         ClasesLbl = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -99,6 +101,8 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
             }
         });
 
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -131,10 +135,19 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
         ClasesLbl.setBackground(new java.awt.Color(255, 255, 255));
         ClasesLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         ClasesLbl.setForeground(new java.awt.Color(255, 255, 255));
+        ClasesLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1034367_advantage_team_teamwork_group_community_icon (2).png"))); // NOI18N
         ClasesLbl.setText("Clases");
         ClasesLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ClasesLblMouseClicked(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(33, 37, 41));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/8725805_exit_icon.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -145,6 +158,10 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
             .addComponent(ClientesLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(EntrenadoresLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
             .addComponent(ClasesLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +172,9 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
                 .addComponent(EntrenadoresLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ClasesLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -409,6 +428,16 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_EntrenadoresLblMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            GUILogin1 guilogin = new GUILogin1();
+            guilogin.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(GuiMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -488,11 +517,13 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
     private javax.swing.JLabel EntrenadoresLbl;
     private javax.swing.JLabel PaqueteCont;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
