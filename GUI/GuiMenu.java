@@ -497,60 +497,10 @@ public class GuiMenu extends javax.swing.JFrame {
 
     private void actualizarFechaHora() {
 
-//        Timer timer = new Timer(1000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//           
-//                Date ahora = new Date();
-//           
-//                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//                String fechaHora = formato.format(ahora);
-//    
-//                FECHA.setText(fechaHora);
-//            }
-//        });
-//
-//        timer.start();
     }
 
     public void actualizarLabel(String nuevoTexto, String NombreLbl) {
-//        if(NombreLbl.equals("ClienteCont")){
-//        this.ClienteCont.setText(nuevoTexto);
-//        }
-//        else if(NombreLbl.equals("EmpleadoCont")){
-//            this.EmpleadoCont.setText(nuevoTexto);
-//        }else if(NombreLbl.equals("EnviosCont")){
-//            this.EnviosCont.setText(nuevoTexto);
-//        }else if(NombreLbl.equals("PaqueteCont")){
-//               this.PaqueteCont.setText(nuevoTexto);
-//        }
-//    }
-//    public void CambiarContLbl(){
-//          clientes.addPropertyChangeListener(evt -> {
-//            if ("clientes".equals(evt.getPropertyName())) {
-//                int cantidadClientes =clientes.getCantidadClientesNoNulos();
-//                actualizarLabel(String.valueOf(cantidadClientes),"ClienteCont");
-//            }
-//        });
-//                empleados.addPropertyChangeListener(evt -> {
-//            if ("empleados".equals(evt.getPropertyName())) {
-//                int cantidadClientes =empleados.getCantidadEmpleadosNoNulos();
-//                actualizarLabel(String.valueOf(cantidadClientes),"EmpleadoCont");
-//            }
-//        });
-//                
-//                   paquetes.addPropertyChangeListener(evt -> {
-//            if ("paquetes".equals(evt.getPropertyName())) {
-//                int cantidadClientes =paquetes.getCantidadPaquetesNoNulos();
-//                actualizarLabel(String.valueOf(cantidadClientes),"PaqueteCont");
-//            }
-//        });   
-//                   listaEnvios.addPropertyChangeListener(evt -> {
-//            if ("listaEnvios".equals(evt.getPropertyName())) {
-//                int cantidadClientes =listaEnvios.getCantidadEnviosNoNulos();
-//                actualizarLabel(String.valueOf(cantidadClientes),"EnviosCont");
-//            }
-//        });        
+     
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ClasesLbl;
