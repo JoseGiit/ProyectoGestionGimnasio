@@ -9,10 +9,16 @@ package GUI;
 //import Envios.GestionEnvios;
 //import Paquetes.ListaPaquete;
 //import RutasEntrega.ListaRutasEntrega;
+import DataBase.DataBaseConnection;
+import Model.Cliente.ClienteDAO;
+import Model.Entrenador.EntrenadorDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
@@ -24,6 +30,7 @@ public class GuiMenu extends javax.swing.JFrame {
     /**
      * Creates new form GuiMenu
      */
+ 
     private GUICliente frmClientes;
     private GUIEntrenador frmEntrenador;
     private GUIClases frmClases;
@@ -33,7 +40,7 @@ public class GuiMenu extends javax.swing.JFrame {
     public GuiMenu() {
 
         initComponents();
-
+        iniciarActualizacionContadores();
         setLocationRelativeTo(null);
         this.DeskMenu.setEnabled(false);
         this.DeskMenu.setVisible(false);
@@ -502,6 +509,27 @@ public class GuiMenu extends javax.swing.JFrame {
     public void actualizarLabel(String nuevoTexto, String NombreLbl) {
      
     }
+    
+    private void iniciarActualizacionContadores() {
+    Thread hiloActualizacion = new Thread(() -> {
+        while (true) {
+            try {
+                // Actualizar los contadores
+                actualizarContadores();
+
+                // Esperar 2 segundos antes de la próxima actualización
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                System.err.println("El hilo fue interrumpido: " + e.getMessage());
+            } catch (SQLException ex) {
+                Logger.getLogger(GuiMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    });
+
+    hiloActualizacion.setDaemon(true); // Para que el hilo se detenga al cerrar la aplicación
+    hiloActualizacion.start();
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ClasesLbl;
     private javax.swing.JLabel ClienteCont;
@@ -528,4 +556,12 @@ public class GuiMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
+
+    private void actualizarContadores() throws SQLException {
+        ClienteDAO cD = new ClienteDAO(DataBaseConnection.getConnection());
+        EntrenadorDAO eD = new EntrenadorDAO(DataBaseConnection.getConnection());
+            this.ClienteCont.setText(String.valueOf(cD.contarClientes()));
+            this.PaqueteCont.setText(String.valueOf(eD.contarEntrenadores()));
+        
+    }
 }

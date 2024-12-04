@@ -87,4 +87,17 @@ public class EntrenadorDAO extends Dao<EntrenadorDTO> {
     public boolean validatePk(int id) throws SQLException{
         return read(id) != null;
     }
+    
+    
+    public int contarEntrenadores() throws SQLException {
+    String query = "CALL sp_contar_entrenadores()";
+    try (CallableStatement stmt = connection.prepareCall(query);
+         ResultSet rs = stmt.executeQuery()) {
+        if (rs.next()) {
+            return rs.getInt("total");
+        }
+    }
+    return 0;
+}
+    
 }

@@ -100,4 +100,16 @@ public class ClienteDAO extends Dao<ClienteDTO> {
     public boolean validatePk(int id) throws SQLException{
         return read(id) != null;
     }
+    
+    
+    public int contarClientes() throws SQLException {
+    String query = "CALL sp_contar_clientes()";
+    try (CallableStatement stmt = connection.prepareCall(query);
+         ResultSet rs = stmt.executeQuery()) {
+        if (rs.next()) {
+            return rs.getInt("total");
+        }
+    }
+    return 0;
+}
 }
