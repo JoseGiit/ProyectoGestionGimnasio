@@ -17,12 +17,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -402,42 +396,9 @@ public class GUIPagos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_IdClientetxtActionPerformed
 
     private void AddLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLblMouseClicked
-        /*  this.ClearTxt();
-        JTextField textField = new JTextField();
-        Object[] message = {
-            "Ingrese la cédula del cliente al que le pertenece el tramite:", textField
-        };
-        int option = JOptionPane.showConfirmDialog(null, message, "Entrada de Cédula", JOptionPane.OK_CANCEL_OPTION);
-        String id = textField.getText();
-        if((option == JOptionPane.OK_OPTION&&!textField.getText().isEmpty()&&this.listC.SearchCliente(id)!=null)){
-        DisableorActiveAll(true);
-        this.jComboBoxPaquete.removeAllItems();
-        actualizarComboBoxP(this.listC.SearchCliente(id).getPaquetes().getPaquetesL());
-        this.NumeroEnvioTxt.setText(String.valueOf(this.listE.getListaEnvios().size()+1));
-        this.CedulaTxt.setText(id);
-        this.NombreTxt.setText(this.listC.SearchCliente(id).getNombre());
-        this.FechaETxt1.setText(String.valueOf(LocalDate.now()));
-          actualizarComboBoxR(this.listR.getRutas());
-          this.EstadoLbl.setVisible(false);
-          this.EstadoTxt.setVisible(false);
-        }else{
-         JOptionPane.showMessageDialog(null, "Cédula no existente, intente de nuevo", "Alerta", JOptionPane.WARNING_MESSAGE);    
-        }
+      
     }//GEN-LAST:event_AddLblMouseClicked
- public void actualizarComboBoxR(HashSet<RutaEntrega> e) {
-     
-        for ( RutaEntrega es : e) {
-            this.jComboBoxRuta.addItem(es.getCodigo());
-        }
-        
-    }
-  public void actualizarComboBoxP(HashMap<String,Paquete> e) {
-     
-        for ( Map.Entry<String, Paquete> entry : e.entrySet()) {
-            this.jComboBoxPaquete.addItem(entry.getValue().getCodigo());
-        }*/
-        
-    }
+ 
     private void buscarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLblMouseClicked
         // TODO add your handling code here:
           DisableorActiveAll(false);
@@ -557,28 +518,51 @@ this.DisableorActiveAll(false);
     }//GEN-LAST:event_TotaltxtActionPerformed
 
 public void DisableorActiveAll(boolean bool){
+    this.IdPago.setEnabled(bool);
+    this.IdPago.setVisible(bool);
     this.idpagotxt.setEnabled(bool);
     this.idpagotxt.setVisible(bool);
+    
+    this.ClienteLbl.setEnabled(bool);
+    this.ClienteLbl.setVisible(bool);
     this.IdClientetxt.setEnabled(bool);
     this.IdClientetxt.setVisible(bool);
-    this.FechaTxt.setEnabled(bool);
-    this.FechaTxt.setVisible(bool);
+    
     this.subtotaLbl.setEnabled(bool);
     this.subtotaLbl.setVisible(bool);
+    this.SubTotalTxt.setEnabled(bool);
+    this.SubTotalTxt.setVisible(bool);
+    
+ 
+    this.FechaTxt.setEnabled(bool);
+    this.FechaTxt.setVisible(bool);
     this.FechaNLbl.setEnabled(bool);
     this.FechaNLbl.setVisible(bool);
+    
+    this.ImpuestoLbl.setEnabled(bool);
+    this.ImpuestoLbl.setVisible(bool);
+    this.impuestotxt.setEnabled(bool);
+    this.impuestotxt.setVisible(bool);
+    
+    this.TotalLbl.setEnabled(bool);
+    this.TotalLbl.setVisible(bool);
+    this.Totaltxt.setEnabled(bool);
+    this.Totaltxt.setVisible(bool);
+
+    
+
+
+
+
 
 }
 
 public void ClearTxt(){
-//    this.NumeroEnvioTxt.setText("");
-//    this.CedulaTxt.setText("");
-//    this.NombreTxt.setText("");
-//    this.FechaETxt.setText("");
-//    this.PrecioTxt.setText("");
-//    this.EstadoTxt.setText("");
-//    this.jComboBoxPaquete.removeAllItems();
-//    this.jComboBoxRuta.removeAllItems();
+     this.IdClientetxt.setText("");
+     this.idpagotxt.setText("");
+     this.SubTotalTxt.setText("");
+     this.Totaltxt.setText("");
+     this.FechaTxt.setText("");
        
 }
  public LocalDate convertirStringAFecha(String fechaStr) {
