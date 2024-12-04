@@ -85,7 +85,6 @@ public class GUILogin extends javax.swing.JInternalFrame {
         CodigoLbl.setForeground(new java.awt.Color(255, 255, 255));
         CodigoLbl.setText("Usuario");
 
-        UsuarioTxt.setBackground(new java.awt.Color(153, 153, 153));
         UsuarioTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         UsuarioTxt.setForeground(new java.awt.Color(204, 204, 204));
         UsuarioTxt.setToolTipText("");
@@ -100,7 +99,6 @@ public class GUILogin extends javax.swing.JInternalFrame {
         NombreLbl.setForeground(new java.awt.Color(255, 255, 255));
         NombreLbl.setText("Contraseña");
 
-        ContraseñaTxt.setBackground(new java.awt.Color(153, 153, 153));
         ContraseñaTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ContraseñaTxt.setForeground(new java.awt.Color(204, 204, 204));
         ContraseñaTxt.setBorder(null);
@@ -114,7 +112,6 @@ public class GUILogin extends javax.swing.JInternalFrame {
         DestinosLbl.setForeground(new java.awt.Color(255, 255, 255));
         DestinosLbl.setText("Roles");
 
-        RolesBox.setBackground(new java.awt.Color(255, 255, 255));
         RolesBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         RolesBox.setForeground(new java.awt.Color(255, 255, 255));
         RolesBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Entrenador" }));
@@ -146,25 +143,22 @@ public class GUILogin extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(RolesBox, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(RolesBox, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jSeparator1)
-                                        .addComponent(UsuarioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(CodigoLbl))
-                                .addGap(41, 41, 41)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(NombreLbl)
-                                    .addComponent(ContraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(193, 193, 193)
-                                .addComponent(SiguienteLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jSeparator1)
+                                .addComponent(UsuarioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CodigoLbl))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NombreLbl)
+                            .addComponent(ContraseñaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(SiguienteLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
