@@ -393,6 +393,10 @@ public class GUIUsuario extends javax.swing.JInternalFrame {
 
     private void AddLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLblMouseClicked
         DisableorActiveAll(true);
+        CedulaLbl.setVisible(false);
+        CedulaLbl.setEnabled(false);
+        CedulaTxt.setVisible(false);
+        CedulaTxt.setEnabled(false);
      jComboBox1.addItem("Administrador");
      jComboBox1.addItem("Entrenador");
 
@@ -448,7 +452,7 @@ jComboBox1.removeAllItems();
                        
                 Usuario emp = new Usuario(
                         this.CedulaTxt1.getText(),
-                        this.CedulaTxt1.getText(),
+                        this.NombreTxt1.getText(),
                         this.jComboBox1.getSelectedItem().toString());
                     dao.create(mapper.toDTO(emp));
                      ClearTxt();
@@ -471,6 +475,7 @@ jComboBox1.removeAllItems();
                 
                 }else {
                     JOptionPane.showMessageDialog(null, "El usuario no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
+                    this.DisableorActiveAll(false);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(GUIUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -485,7 +490,7 @@ jComboBox1.removeAllItems();
                     
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-                  
+                   this.DisableorActiveAll(false);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(GUIUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -493,8 +498,8 @@ jComboBox1.removeAllItems();
         } else {
             try {
                 if (dao.validatePk(Integer.parseInt(this.CedulaTxt.getText()))) {
-                    U cliente = new Cliente (Integer.parseInt(CedulaTxt.getText()),CorreoTxt.getText(),TelTxt.getText(),jComboBox1.getSelectedItem().toString());
-                    dao.update(mapper.toDTO(cliente));
+                    Usuario usuario = new Usuario (CedulaTxt.getText(),CedulaTxt1.getText(),jComboBox1.getSelectedItem().toString());
+                    dao.update(mapper.toDTO(usuario));
                       DisableorActiveAll(false);
                     
                 } else {
@@ -576,7 +581,10 @@ jComboBox1.removeAllItems();
         this.CedulaTxt1.setEnabled(bool);
         this.CedulaTxt1.setVisible(bool);
         this.CedulaLbl1.setEnabled(bool);
-        this.CedulaLbl1.setVisible(bool);      
+        this.CedulaLbl1.setVisible(bool);
+        this.NombreTxt1.setEnabled(bool);
+        this.NombreTxt1.setVisible(bool); 
+       
     }
 
     public void ClearTxt() {
