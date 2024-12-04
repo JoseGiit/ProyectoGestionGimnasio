@@ -39,6 +39,7 @@ public class GUIClases extends javax.swing.JInternalFrame {
      private ClaseDAO dao;
     private  ClaseMapper mapper;
     private EntrenadorDAO daoentrenador;
+   private String modoOperacion; 
     
     
     public GUIClases(){
@@ -291,6 +292,7 @@ public class GUIClases extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TipoClaseTxtActionPerformed
 
     private void AddLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLblMouseClicked
+             modoOperacion = "AGREGAR";
              DisableorActiveAll(true);
              this.IdLbl.setEnabled(false);
              this.IdLbl.setVisible(false);
@@ -309,7 +311,8 @@ public class GUIClases extends javax.swing.JInternalFrame {
 
 
     private void DeletelblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeletelblMouseClicked
-         jComboBox1.removeAllItems();
+         modoOperacion = "ELIMINAR"; 
+        jComboBox1.removeAllItems();
         ClearTxt();
         DisableorActiveAll(false);
          this.IdLbl.setText("Ingrese el id de clase para eliminar");
@@ -320,7 +323,8 @@ public class GUIClases extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_DeletelblMouseClicked
 
     private void ActualizarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarLblMouseClicked
-         jComboBox1.removeAllItems();
+         modoOperacion = "ACTUALIZAR"; 
+        jComboBox1.removeAllItems();
         ClearTxt();
         DisableorActiveAll(false);
           jComboBox1.addItem("Mañana");
@@ -348,7 +352,8 @@ public class GUIClases extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ActualizarLblMouseClicked
 
     private void BuscarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarLblMouseClicked
-         jComboBox1.removeAllItems();
+         modoOperacion = "BUSCAR"; 
+        jComboBox1.removeAllItems();
         ClearTxt();
         DisableorActiveAll(false);
         this.IdLbl.setText("Ingrese el id de clase a buscar:");
@@ -360,99 +365,117 @@ public class GUIClases extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BuscarLblMouseClicked
 
     private void listoLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listoLblMouseClicked
-if (this.IdLbl.getText().equals("Ingrese el id de clase a buscar:")) {
-    if (this.IdTxt.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "El campo 'ID Clase' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    Clase cls;
-    try {
-        if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
-            cls = mapper.toEnt(dao.read(Integer.parseInt(this.IdTxt.getText())));
-            TipoClaseTxt.setText(cls.getTipoClase());
-            jComboBox1.addItem(cls.getHorario());
-            EntrenadorTxt.setText(String.valueOf(cls.getIdEntrenador()));
-            CapacidadTxt.setText(String.valueOf(cls.getCapacidadMaxima()));
-        } else {
-            JOptionPane.showMessageDialog(null, "La clase no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
-        }
-    } catch (SQLException ex) {
-        Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    DisableorActiveAll(true);
+try {
+    switch (modoOperacion) {
+        case "BUSCAR":
+            if (this.IdTxt.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El campo 'ID Clase' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-} else if (this.IdLbl.getText().equals("Ingrese el id de clase para eliminar")) {
-    if (this.IdTxt.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "El campo 'ID Clase' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    try {
-        if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
-            dao.delete(Integer.parseInt(this.IdTxt.getText()));
+            Clase cls;
+            if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
+                cls = mapper.toEnt(dao.read(Integer.parseInt(this.IdTxt.getText())));
+                TipoClaseTxt.setText(cls.getTipoClase());
+                jComboBox1.removeAllItems();
+                jComboBox1.addItem(cls.getHorario());
+                EntrenadorTxt.setText(String.valueOf(cls.getIdEntrenador()));
+                CapacidadTxt.setText(String.valueOf(cls.getCapacidadMaxima()));
+                DisableorActiveAll(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "La clase no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
+            }
+            break;
+
+        case "ELIMINAR":
+            if (this.IdTxt.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El campo 'ID Clase' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
+                dao.delete(Integer.parseInt(this.IdTxt.getText()));
+                ClearTxt();
+                JOptionPane.showMessageDialog(null, "Clase eliminada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "La clase no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
+            }
+            break;
+
+        case "ACTUALIZAR":
+            if (this.IdTxt.getText().isEmpty() || 
+                this.TipoClaseTxt.getText().isEmpty() || 
+                this.EntrenadorTxt.getText().isEmpty() || 
+                this.CapacidadTxt.getText().isEmpty() || 
+                this.jComboBox1.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            try {
+                int idEntrenador = Integer.parseInt(this.EntrenadorTxt.getText());
+                if (!daoentrenador.validatePk(idEntrenador)) {
+                    JOptionPane.showMessageDialog(null, "El entrenador no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "El ID del entrenador debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            
+            Clase claseActualizada = new Clase(
+                    Integer.parseInt(IdTxt.getText()),
+                    TipoClaseTxt.getText(),
+                    jComboBox1.getSelectedItem().toString(),
+                    Integer.parseInt(EntrenadorTxt.getText()),
+                    Integer.parseInt(CapacidadTxt.getText()));
+            dao.update(mapper.toDTO(claseActualizada));
+            JOptionPane.showMessageDialog(null, "Clase actualizada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             ClearTxt();
-        } else {
-            JOptionPane.showMessageDialog(null, "La clase no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
-        }
-    } catch (SQLException ex) {
-        Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
-    }
+            DisableorActiveAll(false);
+            break;
 
-} else {
-    if (this.TipoClaseTxt.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "El campo 'Tipo de Clase' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    } else if (this.EntrenadorTxt.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "El campo 'ID Entrenador' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    } else if (this.CapacidadTxt.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "El campo 'Capacidad' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    } else if (this.jComboBox1.getSelectedItem() == null) {
-        JOptionPane.showMessageDialog(null, "Debe seleccionar un horario.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    try {
-        int idEntrenador = Integer.parseInt(this.EntrenadorTxt.getText());
-        if (!daoentrenador.validatePk(idEntrenador)) {
-            JOptionPane.showMessageDialog(null, "El entrenador no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(null, "El ID del entrenador debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    } catch (SQLException ex) {
-        Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        case "AGREGAR":
+            if (this.TipoClaseTxt.getText().isEmpty() || 
+                this.EntrenadorTxt.getText().isEmpty() || 
+                this.CapacidadTxt.getText().isEmpty() || 
+                this.jComboBox1.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-    try {
-    if (this.TipoClaseTxt.getText().isEmpty() || 
-        this.jComboBox1.getSelectedItem() == null || 
-        this.EntrenadorTxt.getText().isEmpty() || 
-        this.CapacidadTxt.getText().isEmpty()) {
-        
-        JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+            try {
+                int idEntrenador = Integer.parseInt(this.EntrenadorTxt.getText());
+                if (!daoentrenador.validatePk(idEntrenador)) {
+                    JOptionPane.showMessageDialog(null, "El entrenador no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "El ID del entrenador debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-    if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
-        Clase clase = new Clase(
-                Integer.parseInt(IdTxt.getText()),
-                TipoClaseTxt.getText(),
-                jComboBox1.getSelectedItem().toString(),
-                Integer.parseInt(EntrenadorTxt.getText()),
-                Integer.parseInt(CapacidadTxt.getText()));
-        dao.update(mapper.toDTO(clase));
-        DisableorActiveAll(false);
-    } else {
-       JOptionPane.showMessageDialog(null, "El cliente no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
+            Clase nuevaClase = new Clase(
+                    TipoClaseTxt.getText(),
+                    jComboBox1.getSelectedItem().toString(),
+                    Integer.parseInt(EntrenadorTxt.getText()),
+                    Integer.parseInt(CapacidadTxt.getText()));
+            dao.create(mapper.toDTO(nuevaClase));
+            JOptionPane.showMessageDialog(null, "Clase creada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            ClearTxt();
+            DisableorActiveAll(false);
+            break;
 
+        default:
+            JOptionPane.showMessageDialog(null, "Operación no reconocida.", "Error", JOptionPane.ERROR_MESSAGE);
+            break;
     }
 } catch (SQLException ex) {
     Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
-}
+    JOptionPane.showMessageDialog(null, "Ocurrió un error al procesar la solicitud.", "Error", JOptionPane.ERROR_MESSAGE);
+} catch (NumberFormatException ex) {
+    JOptionPane.showMessageDialog(null, "Por favor, ingrese valores numéricos válidos en los campos correspondientes.", "Error", JOptionPane.ERROR_MESSAGE);
 }
 
     }//GEN-LAST:event_listoLblMouseClicked
