@@ -28,6 +28,7 @@ public class GuiMenu extends javax.swing.JFrame {
     private GUIEntrenador frmEntrenador;
     private GUIClases frmClases;
     private GUIPagos frmPagos;
+    private GUIUsuario frmUsuarios;
 
     public GuiMenu() {
 
@@ -451,6 +452,12 @@ public class GuiMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         DeskMenu.setEnabled(false);
         DeskMenu.setVisible(false);
+          DeskMenu.setEnabled(true);
+        DeskMenu.setVisible(true);
+        this.frmUsuarios = new GUIUsuario();
+        this.DeskMenu.add(frmUsuarios);
+        frmUsuarios.setEnabled(true);
+        frmUsuarios.setVisible(true);
     }//GEN-LAST:event_InicioLblMouseClicked
 
     /**
