@@ -9,10 +9,16 @@ package GUI;
 //import Envios.GestionEnvios;
 //import Paquetes.ListaPaquete;
 //import RutasEntrega.ListaRutasEntrega;
+import DataBase.DataBaseConnection;
+import Model.Cliente.ClienteDAO;
+import Model.Entrenador.EntrenadorDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
@@ -33,7 +39,7 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
     public GuiMenuEntrenador() {
 
        initComponents();
-
+       iniciarActualizacionContadores();
        setLocationRelativeTo(null);
        this.DeskMenu.setEnabled(false);
       this.DeskMenu.setVisible(false);                      
@@ -368,41 +374,37 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
 
     private void ClientesLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClientesLblMouseClicked
         // TODO add your handling code here:
-         DeskMenu.setEnabled(false);
-         DeskMenu.setVisible(false);
-        DeskMenu.setEnabled(true);
-        DeskMenu.setVisible(true);
-        this.frmClientes = new GUICliente();
-         this.DeskMenu.add(frmClientes);
-           frmClientes.setEnabled(true);
-          frmClientes.setVisible(true);
+          this.DeskMenu.setEnabled(true);
+            this.DeskMenu.setVisible(true);
+     try {
+        Clientes c = new Clientes(DataBaseConnection.getConnection());
+           this.DeskMenu.add(c);
+        c.setEnabled(true);
+         c.setVisible(true);
+     } catch (SQLException ex) {
+         Logger.getLogger(GuiMenuEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+         System.out.println("Ni idea");
+     }
+
 //        
     }//GEN-LAST:event_ClientesLblMouseClicked
 
     private void ClasesLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClasesLblMouseClicked
-        // TODO add your handling code here:}
-        DeskMenu.setEnabled(false);
-          DeskMenu.setVisible(false);
-          
-        DeskMenu.setEnabled(true);
-        DeskMenu.setVisible(true);
-        this.frmClases = new GUIClases();
-        this.DeskMenu.add(frmClases);
-        frmClases.setEnabled(true);
-        frmClases.setVisible(true);
+   
     }//GEN-LAST:event_ClasesLblMouseClicked
 
     private void EntrenadoresLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrenadoresLblMouseClicked
-        // TODO add your handling code here:
-         DeskMenu.setEnabled(false);
-         DeskMenu.setVisible(false);
-          
-        DeskMenu.setEnabled(true);
-        DeskMenu.setVisible(true);
-        this.frmEntrenador = new GUIEntrenador();
-        this.DeskMenu.add(frmEntrenador);
-        frmEntrenador.setEnabled(true);
-        frmEntrenador.setVisible(true);
+       this.DeskMenu.setEnabled(true);
+            this.DeskMenu.setVisible(true);
+     try {
+        Entrenadores c = new Entrenadores(DataBaseConnection.getConnection());
+           this.DeskMenu.add(c);
+        c.setEnabled(true);
+         c.setVisible(true);
+     } catch (SQLException ex) {
+         Logger.getLogger(GuiMenuEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+         System.out.println("Ni idea");
+     }
 
 
     }//GEN-LAST:event_EntrenadoresLblMouseClicked
@@ -445,61 +447,39 @@ public class GuiMenuEntrenador extends javax.swing.JFrame {
 
     private void actualizarFechaHora() {
 
-//        Timer timer = new Timer(1000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//           
-//                Date ahora = new Date();
-//           
-//                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//                String fechaHora = formato.format(ahora);
-//    
-//                FECHA.setText(fechaHora);
-//            }
-//        });
-//
-//        timer.start();
     }
 
     public void actualizarLabel(String nuevoTexto, String NombreLbl) {
-//        if(NombreLbl.equals("ClienteCont")){
-//        this.ClienteCont.setText(nuevoTexto);
-//        }
-//        else if(NombreLbl.equals("EmpleadoCont")){
-//            this.EmpleadoCont.setText(nuevoTexto);
-//        }else if(NombreLbl.equals("EnviosCont")){
-//            this.EnviosCont.setText(nuevoTexto);
-//        }else if(NombreLbl.equals("PaqueteCont")){
-//               this.PaqueteCont.setText(nuevoTexto);
-//        }
-//    }
-//    public void CambiarContLbl(){
-//          clientes.addPropertyChangeListener(evt -> {
-//            if ("clientes".equals(evt.getPropertyName())) {
-//                int cantidadClientes =clientes.getCantidadClientesNoNulos();
-//                actualizarLabel(String.valueOf(cantidadClientes),"ClienteCont");
-//            }
-//        });
-//                empleados.addPropertyChangeListener(evt -> {
-//            if ("empleados".equals(evt.getPropertyName())) {
-//                int cantidadClientes =empleados.getCantidadEmpleadosNoNulos();
-//                actualizarLabel(String.valueOf(cantidadClientes),"EmpleadoCont");
-//            }
-//        });
-//                
-//                   paquetes.addPropertyChangeListener(evt -> {
-//            if ("paquetes".equals(evt.getPropertyName())) {
-//                int cantidadClientes =paquetes.getCantidadPaquetesNoNulos();
-//                actualizarLabel(String.valueOf(cantidadClientes),"PaqueteCont");
-//            }
-//        });   
-//                   listaEnvios.addPropertyChangeListener(evt -> {
-//            if ("listaEnvios".equals(evt.getPropertyName())) {
-//                int cantidadClientes =listaEnvios.getCantidadEnviosNoNulos();
-//                actualizarLabel(String.valueOf(cantidadClientes),"EnviosCont");
-//            }
-//        });        
+ 
     }
+     private void iniciarActualizacionContadores() {
+    Thread hiloActualizacion = new Thread(() -> {
+        while (true) {
+            try {
+                // Actualizar los contadores
+                actualizarContadores();
+
+                // Esperar 2 segundos antes de la próxima actualización
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.err.println("El hilo fue interrumpido: " + e.getMessage());
+            } catch (SQLException ex) {
+                Logger.getLogger(GuiMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    });
+
+    hiloActualizacion.setDaemon(true); // Para que el hilo se detenga al cerrar la aplicación
+    hiloActualizacion.start();
+}
+         private void actualizarContadores() throws SQLException {
+        ClienteDAO cD = new ClienteDAO(DataBaseConnection.getConnection());
+        EntrenadorDAO eD = new EntrenadorDAO(DataBaseConnection.getConnection());
+            this.ClienteCont.setText(String.valueOf(cD.contarClientes()));
+            this.PaqueteCont.setText(String.valueOf(eD.contarEntrenadores()));
+        
+    }
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ClasesLbl;
     private javax.swing.JLabel ClienteCont;
