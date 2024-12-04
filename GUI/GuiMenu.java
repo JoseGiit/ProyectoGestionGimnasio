@@ -548,7 +548,7 @@ public class GuiMenu extends javax.swing.JFrame {
                 actualizarContadores();
 
                 // Esperar 2 segundos antes de la próxima actualización
-                Thread.sleep(500);
+                Thread.sleep(4000);
             } catch (InterruptedException e) {
                 System.err.println("El hilo fue interrumpido: " + e.getMessage());
             } catch (SQLException ex) {

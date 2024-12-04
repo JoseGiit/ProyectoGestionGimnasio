@@ -475,6 +475,7 @@ this.DisableorActiveAll(false);
       }else if(!IdClientetxt.getText().isEmpty()&&!FechaTxt.getText().isEmpty()&&!SubTotalTxt.getText().isEmpty()&&!impuestotxt.getText().isEmpty()){
           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
            Date fecha;
+           
           
           ClienteMapper clientemapper;
           clientemapper= new ClienteMapper();
