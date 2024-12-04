@@ -493,7 +493,7 @@ jComboBox1.removeAllItems();
         } else {
             try {
                 if (dao.validatePk(Integer.parseInt(this.CedulaTxt.getText()))) {
-                    Cliente cliente = new Cliente (Integer.parseInt(CedulaTxt.getText()),CorreoTxt.getText(),TelTxt.getText(),jComboBox1.getSelectedItem().toString());
+                    U cliente = new Cliente (Integer.parseInt(CedulaTxt.getText()),CorreoTxt.getText(),TelTxt.getText(),jComboBox1.getSelectedItem().toString());
                     dao.update(mapper.toDTO(cliente));
                       DisableorActiveAll(false);
                     
