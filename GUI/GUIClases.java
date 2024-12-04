@@ -83,6 +83,8 @@ public class GUIClases extends javax.swing.JInternalFrame {
 
         setPreferredSize(new java.awt.Dimension(840, 421));
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel6.setBackground(new java.awt.Color(33, 37, 41));
 
         AddLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -185,26 +187,34 @@ public class GUIClases extends javax.swing.JInternalFrame {
                     .addComponent(CancelLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
+
         jPanel7.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setBackground(new java.awt.Color(204, 204, 204));
         jLabel9.setOpaque(true);
+        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 789, 30));
 
         HorarioRLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         HorarioRLbl.setForeground(new java.awt.Color(255, 255, 255));
         HorarioRLbl.setText("Horario:");
+        jPanel7.add(HorarioRLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 177, 197, 30));
 
         TipoClaseLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         TipoClaseLbl.setForeground(new java.awt.Color(255, 255, 255));
         TipoClaseLbl.setText("Tipo de clase:");
+        jPanel7.add(TipoClaseLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 98, -1, 30));
 
         EntrenadorLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         EntrenadorLbl.setForeground(new java.awt.Color(255, 255, 255));
         EntrenadorLbl.setText("Entrenador Asignado(ID):");
+        jPanel7.add(EntrenadorLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 36, -1, 30));
 
         Capacidadlbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         Capacidadlbl.setForeground(new java.awt.Color(255, 255, 255));
         Capacidadlbl.setText("Capacidad máxima");
+        jPanel7.add(Capacidadlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, 30));
 
         TipoClaseTxt.setBackground(new java.awt.Color(204, 204, 204));
         TipoClaseTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -215,86 +225,31 @@ public class GUIClases extends javax.swing.JInternalFrame {
                 TipoClaseTxtActionPerformed(evt);
             }
         });
+        jPanel7.add(TipoClaseTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 138, 179, -1));
 
         CapacidadTxt.setBackground(new java.awt.Color(204, 204, 204));
         CapacidadTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jPanel7.add(CapacidadTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 190, -1));
 
         jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mañana", "Tarde", "Noche" }));
+        jPanel7.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 219, 138, -1));
 
         EntrenadorTxt.setBackground(new java.awt.Color(204, 204, 204));
         EntrenadorTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jPanel7.add(EntrenadorTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 70, 190, -1));
 
         IdTxt.setBackground(new java.awt.Color(204, 204, 204));
         IdTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jPanel7.add(IdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 70, 190, -1));
 
         IdLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         IdLbl.setForeground(new java.awt.Color(255, 255, 255));
         IdLbl.setText("Id:");
+        jPanel7.add(IdLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 36, -1, 30));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(IdLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EntrenadorLbl)
-                        .addGap(92, 92, 92))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TipoClaseTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TipoClaseLbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EntrenadorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Capacidadlbl)
-                            .addComponent(CapacidadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(101, 101, 101))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(HorarioRLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EntrenadorLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IdLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EntrenadorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(CapacidadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Capacidadlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(IdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TipoClaseLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(TipoClaseTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(HorarioRLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, 360));
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -307,7 +262,7 @@ public class GUIClases extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -315,24 +270,7 @@ public class GUIClases extends javax.swing.JInternalFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -388,12 +326,11 @@ public class GUIClases extends javax.swing.JInternalFrame {
           jComboBox1.addItem("Mañana");
           jComboBox1.addItem("Tarde");
           jComboBox1.addItem("Noche");
-
-        this.TipoClaseLbl.setEnabled(true);
-        this.TipoClaseLbl.setVisible(true);
-        this.TipoClaseTxt.setEnabled(true);
-        this.TipoClaseTxt.setVisible(true); 
-        this.EntrenadorLbl.setText("Nuevo Entrenador:");
+        this.IdLbl.setEnabled(true);
+        this.IdLbl.setVisible(true);
+        this.IdTxt.setEnabled(true);
+        this.IdTxt.setVisible(true); 
+        this.EntrenadorLbl.setText("Entrenador:");
         this.EntrenadorLbl.setEnabled(true);
         this.EntrenadorLbl.setVisible(true);
         this.EntrenadorTxt.setEnabled(true);
@@ -414,7 +351,7 @@ public class GUIClases extends javax.swing.JInternalFrame {
          jComboBox1.removeAllItems();
         ClearTxt();
         DisableorActiveAll(false);
-        this.TipoClaseLbl.setText("Ingrese el id de clase a buscar:");
+        this.IdLbl.setText("Ingrese el id de clase a buscar:");
         this.TipoClaseLbl.setEnabled(true);
         this.TipoClaseLbl.setVisible(true);
         this.IdTxt.setEnabled(true);
@@ -423,109 +360,101 @@ public class GUIClases extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BuscarLblMouseClicked
 
     private void listoLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listoLblMouseClicked
-
-        if (this.TipoClaseTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        else if (this.EntrenadorTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío..", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        else if (this.CapacidadTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        else if (this.jComboBox1.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        else if (this.IdTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        
-        
-        if (!this.TipoClaseTxt.getText().isEmpty()
-                && !this.EntrenadorTxt.getText().isEmpty() && !this.CapacidadTxt.getText().isEmpty()) {
-
-            try {
-                
-                 int idEntrenador = Integer.parseInt(this.EntrenadorTxt.getText());
-                if(daoentrenador.validatePk(idEntrenador)){
-               
-                Clase cls = new Clase(this.TipoClaseTxt.getText(),
-                                      this.jComboBox1.getSelectedItem().toString(),
-                        Integer.parseInt(this.EntrenadorTxt.getText()),
-                        Integer.parseInt(this.CapacidadTxt.getText()));
-                        dao.create(mapper.toDTO(cls));
-                       ClearTxt();
-                       DisableorActiveAll(false);
-                }else{
-              JOptionPane.showMessageDialog(null, "El entrenador no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-
-                }
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-
-        
-        }
-        else if (this.TipoClaseLbl.getText().equals("Ingrese el id de clase a buscar:")) {
-
-            Clase cls;
-            try {
-                if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))){
-                cls = mapper.toEnt(dao.read(Integer.valueOf(this.IdTxt.getText())));
-                TipoClaseTxt.setText(cls.getTipoClase());
-                 jComboBox1.addItem(cls.getHorario());
-                EntrenadorTxt.setText(String.valueOf(cls.getIdEntrenador()));
-                CapacidadTxt.setText(String.valueOf(cls.getCapacidadMaxima()));
-                
-                }else {
-               JOptionPane.showMessageDialog(null, "La Clase no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-                } 
-            } catch (SQLException ex) {
-                Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            DisableorActiveAll(true);
-
-        } else if (this.IdLbl.getText().equals("Ingrese el id de clase para eliminar")) {
-            System.out.println("x");
-            try {
-                if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
-                    
-                    dao.delete(Integer.valueOf(IdTxt.getText()));
-                    ClearTxt();
-                    
-                } else {
-                    JOptionPane.showMessageDialog(null, "La clase no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-                  
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
-            }
+if (this.IdLbl.getText().equals("Ingrese el id de clase a buscar:")) {
+    if (this.IdTxt.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "El campo 'ID Clase' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    Clase cls;
+    try {
+        if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
+            cls = mapper.toEnt(dao.read(Integer.parseInt(this.IdTxt.getText())));
+            TipoClaseTxt.setText(cls.getTipoClase());
+            jComboBox1.addItem(cls.getHorario());
+            EntrenadorTxt.setText(String.valueOf(cls.getIdEntrenador()));
+            CapacidadTxt.setText(String.valueOf(cls.getCapacidadMaxima()));
         } else {
-
-            try {
-                if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
-                    Clase cls = new Clase (Integer.parseInt(IdTxt.getText()),TipoClaseTxt.getText(),jComboBox1.getSelectedItem().toString(),
-                            Integer.parseInt(EntrenadorTxt.getText()),Integer.parseInt(CapacidadTxt.getText()));
-                    dao.update(mapper.toDTO(cls));
-                      DisableorActiveAll(false);
-                    
-                } else {
-                    JOptionPane.showMessageDialog(null, "La clase no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            JOptionPane.showMessageDialog(null, "La clase no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
         }
-             
+    } catch (SQLException ex) {
+        Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    DisableorActiveAll(true);
+
+} else if (this.IdLbl.getText().equals("Ingrese el id de clase para eliminar")) {
+    if (this.IdTxt.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "El campo 'ID Clase' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    try {
+        if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
+            dao.delete(Integer.parseInt(this.IdTxt.getText()));
+            ClearTxt();
+        } else {
+            JOptionPane.showMessageDialog(null, "La clase no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+} else {
+    if (this.TipoClaseTxt.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "El campo 'Tipo de Clase' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    } else if (this.EntrenadorTxt.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "El campo 'ID Entrenador' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    } else if (this.CapacidadTxt.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "El campo 'Capacidad' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    } else if (this.jComboBox1.getSelectedItem() == null) {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar un horario.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    try {
+        int idEntrenador = Integer.parseInt(this.EntrenadorTxt.getText());
+        if (!daoentrenador.validatePk(idEntrenador)) {
+            JOptionPane.showMessageDialog(null, "El entrenador no existe", "Información incorrecta", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(null, "El ID del entrenador debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    } catch (SQLException ex) {
+        Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    try {
+    if (this.TipoClaseTxt.getText().isEmpty() || 
+        this.jComboBox1.getSelectedItem() == null || 
+        this.EntrenadorTxt.getText().isEmpty() || 
+        this.CapacidadTxt.getText().isEmpty()) {
+        
+        JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (dao.validatePk(Integer.parseInt(this.IdTxt.getText()))) {
+        Clase clase = new Clase(
+                Integer.parseInt(IdTxt.getText()),
+                TipoClaseTxt.getText(),
+                jComboBox1.getSelectedItem().toString(),
+                Integer.parseInt(EntrenadorTxt.getText()),
+                Integer.parseInt(CapacidadTxt.getText()));
+        dao.update(mapper.toDTO(clase));
+        DisableorActiveAll(false);
+    } else {
+       JOptionPane.showMessageDialog(null, "El cliente no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
+
+    }
+} catch (SQLException ex) {
+    Logger.getLogger(GUIClases.class.getName()).log(Level.SEVERE, null, ex);
+}
+}
+
     }//GEN-LAST:event_listoLblMouseClicked
 
     private void CancelLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelLblMouseClicked
