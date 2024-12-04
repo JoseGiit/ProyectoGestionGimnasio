@@ -66,6 +66,7 @@ public class GuiMenu extends javax.swing.JFrame {
         ClasesLbl = new javax.swing.JLabel();
         PagosLbl = new javax.swing.JLabel();
         InicioLbl = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -134,7 +135,7 @@ public class GuiMenu extends javax.swing.JFrame {
         ClasesLbl.setBackground(new java.awt.Color(255, 255, 255));
         ClasesLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         ClasesLbl.setForeground(new java.awt.Color(255, 255, 255));
-        ClasesLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/entrenador.png"))); // NOI18N
+        ClasesLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1034367_advantage_team_teamwork_group_community_icon (2).png"))); // NOI18N
         ClasesLbl.setText("Clases");
         ClasesLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -154,13 +155,21 @@ public class GuiMenu extends javax.swing.JFrame {
         });
 
         InicioLbl.setBackground(new java.awt.Color(255, 255, 255));
-        InicioLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        InicioLbl.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         InicioLbl.setForeground(new java.awt.Color(255, 255, 255));
         InicioLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         InicioLbl.setText("Administrar Usuarios");
         InicioLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 InicioLblMouseClicked(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(33, 37, 41));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/8725805_exit_icon.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -173,6 +182,10 @@ public class GuiMenu extends javax.swing.JFrame {
             .addComponent(ClasesLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(PagosLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
             .addComponent(InicioLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,6 +200,8 @@ public class GuiMenu extends javax.swing.JFrame {
                 .addComponent(PagosLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(InicioLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(153, 153, 153)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -467,6 +482,16 @@ public class GuiMenu extends javax.swing.JFrame {
         frmUsuarios.setVisible(true);
     }//GEN-LAST:event_InicioLblMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            GUILogin1 guilogin = new GUILogin1();
+            guilogin.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(GuiMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -540,6 +565,7 @@ public class GuiMenu extends javax.swing.JFrame {
     private javax.swing.JLabel PagosLbl;
     private javax.swing.JLabel PaqueteCont;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
