@@ -545,7 +545,27 @@ public class GUICliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ActualizarLblMouseClicked
 
     private void ListoLblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListoLblActionPerformed
-
+        if (this.CedulaTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if (this.TelTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío..", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if (this.CorreoTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if (this.jComboBox1.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
+        
+        
+        
         if (!this.CedulaTxt.getText().isEmpty() && !this.NombreTxt.getText().isEmpty() && !this.FechaNTxt1.getText().isEmpty()
                 && !this.CorreoTxt.getText().isEmpty() && !this.TelTxt.getText().isEmpty() && !FechaNTxt.getText().isEmpty()) {
 

@@ -96,12 +96,12 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="subtotaltxt" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="subtotaLbl" min="-2" pref="179" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="FechaNLbl" pref="179" max="32767" attributes="0"/>
-                                              <Component id="CedulaLbl" min="-2" max="-2" attributes="0"/>
-                                              <Component id="CorreoLbl" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                                              <Component id="IdPago" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ClienteLbl" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                                               <Component id="FechaTxt" alignment="0" max="32767" attributes="0"/>
                                               <Component id="IdClientetxt" alignment="0" max="32767" attributes="0"/>
                                               <Component id="idpagotxt" alignment="0" max="32767" attributes="0"/>
@@ -110,21 +110,16 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                                                  <Component id="FechaNLbl3" min="-2" pref="179" max="-2" attributes="0"/>
+                                                  <Component id="ImpuestoLbl" min="-2" pref="179" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="SalarioLbl4" min="-2" pref="90" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="FechaETxt1" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
-                                                      <Component id="Totaltxt" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
-                                                      <Component id="impuestotxt" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="TotalLbl" min="-2" pref="90" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                                               </Group>
+                                              <Component id="SubTotalTxt" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
+                                              <Component id="Totaltxt" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
+                                              <Component id="impuestotxt" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -149,25 +144,25 @@
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="CedulaLbl" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="subtotaltxt" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="IdPago" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="subtotaLbl" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="idpagotxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="FechaETxt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="SubTotalTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="CorreoLbl" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="FechaNLbl3" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="ClienteLbl" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="ImpuestoLbl" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="FechaNLbl" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="SalarioLbl4" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Component id="TotalLbl" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -375,7 +370,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JLabel" name="CedulaLbl">
+        <Component class="javax.swing.JLabel" name="IdPago">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
@@ -414,7 +409,7 @@
             <Property name="text" type="java.lang.String" value="Fecha:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="CorreoLbl">
+        <Component class="javax.swing.JLabel" name="ClienteLbl">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="1"/>
@@ -439,7 +434,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IdClientetxtActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="SalarioLbl4">
+        <Component class="javax.swing.JLabel" name="TotalLbl">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="1"/>
@@ -456,7 +451,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="dd MM yyyy" subtype="-1" type="1"/>
+              <Format format="yyyy -MM-dd" subtype="-1" type="1"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
@@ -466,7 +461,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FechaTxtActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="subtotaltxt">
+        <Component class="javax.swing.JLabel" name="subtotaLbl">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="1"/>
@@ -477,7 +472,7 @@
             <Property name="text" type="java.lang.String" value="Subtotal:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="FechaNLbl3">
+        <Component class="javax.swing.JLabel" name="ImpuestoLbl">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="1"/>
@@ -488,7 +483,7 @@
             <Property name="text" type="java.lang.String" value="Impuesto:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="FechaETxt1">
+        <Component class="javax.swing.JFormattedTextField" name="SubTotalTxt">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -501,7 +496,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FechaETxt1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubTotalTxtActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="impuestotxt">

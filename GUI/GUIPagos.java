@@ -70,16 +70,16 @@ public class GUIPagos extends javax.swing.JInternalFrame {
         ListoLbl = new javax.swing.JButton();
         CancelLbl = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        CedulaLbl = new javax.swing.JLabel();
+        IdPago = new javax.swing.JLabel();
         idpagotxt = new javax.swing.JTextField();
         FechaNLbl = new javax.swing.JLabel();
-        CorreoLbl = new javax.swing.JLabel();
+        ClienteLbl = new javax.swing.JLabel();
         IdClientetxt = new javax.swing.JTextField();
-        SalarioLbl4 = new javax.swing.JLabel();
+        TotalLbl = new javax.swing.JLabel();
         FechaTxt = new javax.swing.JFormattedTextField();
-        subtotaltxt = new javax.swing.JLabel();
-        FechaNLbl3 = new javax.swing.JLabel();
-        FechaETxt1 = new javax.swing.JFormattedTextField();
+        subtotaLbl = new javax.swing.JLabel();
+        ImpuestoLbl = new javax.swing.JLabel();
+        SubTotalTxt = new javax.swing.JFormattedTextField();
         impuestotxt = new javax.swing.JFormattedTextField();
         Totaltxt = new javax.swing.JFormattedTextField();
 
@@ -225,10 +225,10 @@ public class GUIPagos extends javax.swing.JInternalFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        CedulaLbl.setBackground(new java.awt.Color(153, 153, 153));
-        CedulaLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        CedulaLbl.setForeground(new java.awt.Color(153, 153, 153));
-        CedulaLbl.setText("Id de pago");
+        IdPago.setBackground(new java.awt.Color(153, 153, 153));
+        IdPago.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        IdPago.setForeground(new java.awt.Color(153, 153, 153));
+        IdPago.setText("Id de pago");
 
         idpagotxt.setEditable(false);
         idpagotxt.setBackground(new java.awt.Color(204, 204, 204));
@@ -243,9 +243,9 @@ public class GUIPagos extends javax.swing.JInternalFrame {
         FechaNLbl.setForeground(new java.awt.Color(153, 153, 153));
         FechaNLbl.setText("Fecha:");
 
-        CorreoLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        CorreoLbl.setForeground(new java.awt.Color(153, 153, 153));
-        CorreoLbl.setText(" Cliente:");
+        ClienteLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        ClienteLbl.setForeground(new java.awt.Color(153, 153, 153));
+        ClienteLbl.setText(" Cliente:");
 
         IdClientetxt.setEditable(false);
         IdClientetxt.setBackground(new java.awt.Color(204, 204, 204));
@@ -256,12 +256,12 @@ public class GUIPagos extends javax.swing.JInternalFrame {
             }
         });
 
-        SalarioLbl4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        SalarioLbl4.setForeground(new java.awt.Color(153, 153, 153));
-        SalarioLbl4.setText("Total:");
+        TotalLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        TotalLbl.setForeground(new java.awt.Color(153, 153, 153));
+        TotalLbl.setText("Total:");
 
         FechaTxt.setBackground(new java.awt.Color(204, 204, 204));
-        FechaTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd MM yyyy"))));
+        FechaTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy -MM-dd"))));
         FechaTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         FechaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,20 +269,20 @@ public class GUIPagos extends javax.swing.JInternalFrame {
             }
         });
 
-        subtotaltxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        subtotaltxt.setForeground(new java.awt.Color(153, 153, 153));
-        subtotaltxt.setText("Subtotal:");
+        subtotaLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        subtotaLbl.setForeground(new java.awt.Color(153, 153, 153));
+        subtotaLbl.setText("Subtotal:");
 
-        FechaNLbl3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        FechaNLbl3.setForeground(new java.awt.Color(153, 153, 153));
-        FechaNLbl3.setText("Impuesto:");
+        ImpuestoLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        ImpuestoLbl.setForeground(new java.awt.Color(153, 153, 153));
+        ImpuestoLbl.setText("Impuesto:");
 
-        FechaETxt1.setBackground(new java.awt.Color(204, 204, 204));
-        FechaETxt1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
-        FechaETxt1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        FechaETxt1.addActionListener(new java.awt.event.ActionListener() {
+        SubTotalTxt.setBackground(new java.awt.Color(204, 204, 204));
+        SubTotalTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        SubTotalTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        SubTotalTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FechaETxt1ActionPerformed(evt);
+                SubTotalTxtActionPerformed(evt);
             }
         });
 
@@ -318,12 +318,12 @@ public class GUIPagos extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(subtotaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(subtotaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(FechaNLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                            .addComponent(CedulaLbl)
-                                            .addComponent(CorreoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(IdPago)
+                                            .addComponent(ClienteLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(FechaTxt)
                                             .addComponent(IdClientetxt)
                                             .addComponent(idpagotxt))
@@ -331,17 +331,14 @@ public class GUIPagos extends javax.swing.JInternalFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(98, 98, 98)
-                                                .addComponent(FechaNLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(ImpuestoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(11, 11, 11))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(SalarioLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(76, 76, 76))
-                                                    .addComponent(FechaETxt1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(Totaltxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(impuestotxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))))))))
+                                                .addComponent(TotalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(76, 76, 76))
+                                            .addComponent(SubTotalTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Totaltxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(impuestotxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -356,22 +353,22 @@ public class GUIPagos extends javax.swing.JInternalFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CedulaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(subtotaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(IdPago, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(subtotaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(idpagotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FechaETxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SubTotalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CorreoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FechaNLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ClienteLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ImpuestoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(FechaNLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(SalarioLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(TotalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(IdClientetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(impuestotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -444,9 +441,9 @@ public class GUIPagos extends javax.swing.JInternalFrame {
     private void buscarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLblMouseClicked
         // TODO add your handling code here:
           DisableorActiveAll(false);
-        this.CedulaLbl.setEnabled(true);
-         this.CedulaLbl.setVisible(true);
-          this.CedulaLbl.setText("Numero de Envio a Buscar");
+        this.IdPago.setEnabled(true);
+         this.IdPago.setVisible(true);
+          this.IdPago.setText("Numero de Envio a Buscar");
            this.idpagotxt.setEditable(true);
         this.idpagotxt.setEnabled(true);
         this.idpagotxt.setVisible(true);
@@ -547,9 +544,9 @@ this.DisableorActiveAll(false);
         
     }//GEN-LAST:event_CancelLblActionPerformed
 
-    private void FechaETxt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaETxt1ActionPerformed
+    private void SubTotalTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubTotalTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FechaETxt1ActionPerformed
+    }//GEN-LAST:event_SubTotalTxtActionPerformed
 
     private void impuestotxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_impuestotxtActionPerformed
         // TODO add your handling code here:
@@ -560,44 +557,17 @@ this.DisableorActiveAll(false);
     }//GEN-LAST:event_TotaltxtActionPerformed
 
 public void DisableorActiveAll(boolean bool){
-//    this.CedulaLbl.setEnabled(bool);
-//    this.CedulaLbl.setVisible(bool);
-//    this.NumeroEnvioTxt.setEnabled(bool);
-//    this.NumeroEnvioTxt.setVisible(bool);
-//    this.NombreLbl.setEnabled(bool);
-//    this.NombreLbl.setVisible(bool);
-//    this.CedulaTxt.setEnabled(bool);
-//    this.CedulaTxt.setVisible(bool);
-//    this.FechaNLbl.setEnabled(bool);
-//    this.FechaNLbl.setVisible(bool);
-//    this.FechaETxt.setEnabled(bool);
-//    this.FechaETxt.setVisible(bool);
-//     this.CorreoLbl.setEnabled(bool);
-//    this.CorreoLbl.setVisible(bool);
-//    this.NombreTxt.setEnabled(bool);
-//    this.NombreTxt.setVisible(bool);
-//    this.SalarioLbl.setEnabled(bool);
-//    this.SalarioLbl.setVisible(bool);
-//    this.jComboBoxPaquete.setEnabled(bool);
-//    this.jComboBoxPaquete.setVisible(bool);
-//    this.SalarioLbl3.setEnabled(bool);
-//    this.SalarioLbl3.setVisible(bool);
-//    this.jComboBoxRuta.setEnabled(bool);
-//    this.jComboBoxRuta.setVisible(bool);
-//    this.SalarioLbl.setEnabled(bool);
-//    this.SalarioLbl.setVisible(bool);
-//    this.SalarioLbl4.setEnabled(bool);
-//    this.SalarioLbl4.setVisible(bool);
-//     this.PrecioTxt.setEnabled(bool);
-//    this.PrecioTxt.setVisible(bool);
-//    this.FechaNLbl1.setEnabled(bool);
-//    this.FechaNLbl1.setVisible(bool);
-//     this.FechaETxt1.setEnabled(bool);
-//    this.FechaETxt1.setVisible(bool);
-//    this.EstadoLbl.setVisible(bool);
-//      this.EstadoLbl.setEnabled(bool);
-//       this.EstadoTxt.setVisible(bool);
-//      this.EstadoTxt.setEnabled(bool);
+    this.idpagotxt.setEnabled(bool);
+    this.idpagotxt.setVisible(bool);
+    this.IdClientetxt.setEnabled(bool);
+    this.IdClientetxt.setVisible(bool);
+    this.FechaTxt.setEnabled(bool);
+    this.FechaTxt.setVisible(bool);
+    this.subtotaLbl.setEnabled(bool);
+    this.subtotaLbl.setVisible(bool);
+    this.FechaNLbl.setEnabled(bool);
+    this.FechaNLbl.setVisible(bool);
+
 }
 
 public void ClearTxt(){
@@ -661,15 +631,15 @@ public void ClearTxt(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddLbl;
     private javax.swing.JButton CancelLbl;
-    private javax.swing.JLabel CedulaLbl;
-    private javax.swing.JLabel CorreoLbl;
-    private javax.swing.JFormattedTextField FechaETxt1;
+    private javax.swing.JLabel ClienteLbl;
     private javax.swing.JLabel FechaNLbl;
-    private javax.swing.JLabel FechaNLbl3;
     private javax.swing.JFormattedTextField FechaTxt;
     private javax.swing.JTextField IdClientetxt;
+    private javax.swing.JLabel IdPago;
+    private javax.swing.JLabel ImpuestoLbl;
     private javax.swing.JButton ListoLbl;
-    private javax.swing.JLabel SalarioLbl4;
+    private javax.swing.JFormattedTextField SubTotalTxt;
+    private javax.swing.JLabel TotalLbl;
     private javax.swing.JFormattedTextField Totaltxt;
     private javax.swing.JLabel buscarLbl;
     private javax.swing.JTextField idpagotxt;
@@ -683,6 +653,6 @@ public void ClearTxt(){
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel subtotaltxt;
+    private javax.swing.JLabel subtotaLbl;
     // End of variables declaration//GEN-END:variables
 }

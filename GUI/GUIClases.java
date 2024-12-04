@@ -425,23 +425,23 @@ public class GUIClases extends javax.swing.JInternalFrame {
     private void listoLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listoLblMouseClicked
 
         if (this.TipoClaseTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo 'Tipo de Clase' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         else if (this.EntrenadorTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo 'ID Entrenador' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío..", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         else if (this.CapacidadTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo 'Capacidad' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         else if (this.jComboBox1.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un horario.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        else if (this.TipoClaseTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo 'ID' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        else if (this.IdTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         

@@ -495,6 +495,29 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
 
     private void ListoLblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListoLblActionPerformed
 
+        if (this.CedulaTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if (this.NameTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío..", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if (this.EspecialidadTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if (this.TelTxt1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ningun campo  puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
+        
+        
+        
+        
+        
         if (!this.NameTxt.getText().isEmpty()
                 && !this.TelTxt1.getText().isEmpty()
                 && alMenosUnCheckboxSeleccionado(PersonalBox, BienestarBox, FuncionalBox, RehabilitacionBox, FuerzaBox, NutricionBox)
