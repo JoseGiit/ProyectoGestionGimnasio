@@ -465,7 +465,11 @@ public class GuiMenu extends javax.swing.JFrame {
         DeskMenu.setVisible(false);
         DeskMenu.setEnabled(true);
         DeskMenu.setVisible(true);
-        this.frmPagos = new GUIPagos();
+        try {
+            this.frmPagos = new GUIPagos();
+        } catch (SQLException ex) {
+            Logger.getLogger(GuiMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.DeskMenu.add(frmPagos);
         frmPagos.setEnabled(true);
         frmPagos.setVisible(true);

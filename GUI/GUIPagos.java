@@ -4,6 +4,14 @@
  */
 package GUI;
 
+import DataBase.DataBaseConnection;
+import Model.Cliente.ClienteDAO;
+import Model.Cliente.ClienteMapper;
+import Model.Pago.Pago;
+import Model.Pago.PagoDAO;
+import Model.Pago.PagoDTO;
+import Model.Pago.PagoMapper;
+import java.sql.SQLException;
 /*import Clientes.ListaCliente;
 import Envios.Envio;
 import Envios.GestionEnvios;
@@ -17,6 +25,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -29,17 +39,13 @@ public class GUIPagos extends javax.swing.JInternalFrame {
     /**
      * Creates new form FrmEmpleados
      */
-    /*private ListaPaquete listP;
-    private ListaCliente listC;
-    private GestionEnvios listE;
-    private ListaRutasEntrega listR;*/
-    public GUIPagos() {
-        /*initComponents();
+    PagoDAO dao;
+    PagoMapper mapper;
+    public GUIPagos() throws SQLException {
+        initComponents();
+        dao = new PagoDAO(DataBaseConnection.getConnection());
         DisableorActiveAll(false);
-        listP = ListaPaquete.getInstance();
-        listE = GestionEnvios.getInstance();
-        listC = ListaCliente.getInstance();
-       listR= ListaRutasEntrega.getInstance();*/
+        mapper = new PagoMapper();
     }
 
     /**
@@ -104,7 +110,6 @@ public class GUIPagos extends javax.swing.JInternalFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-trabajo-permanente-24.png"))); // NOI18N
         jLabel1.setText("                                                            Administrar Pagos");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -241,7 +246,6 @@ public class GUIPagos extends javax.swing.JInternalFrame {
         ClienteLbl.setForeground(new java.awt.Color(153, 153, 153));
         ClienteLbl.setText(" Cliente:");
 
-        IdClientetxt.setEditable(false);
         IdClientetxt.setBackground(new java.awt.Color(204, 204, 204));
         IdClientetxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         IdClientetxt.addActionListener(new java.awt.event.ActionListener() {
@@ -255,7 +259,7 @@ public class GUIPagos extends javax.swing.JInternalFrame {
         TotalLbl.setText("Total:");
 
         FechaTxt.setBackground(new java.awt.Color(204, 204, 204));
-        FechaTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy -MM-dd"))));
+        FechaTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
         FechaTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         FechaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,25 +276,42 @@ public class GUIPagos extends javax.swing.JInternalFrame {
         ImpuestoLbl.setText("Impuesto:");
 
         SubTotalTxt.setBackground(new java.awt.Color(204, 204, 204));
-        SubTotalTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        SubTotalTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         SubTotalTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         SubTotalTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SubTotalTxtActionPerformed(evt);
             }
         });
+        SubTotalTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SubTotalTxtKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                SubTotalTxtKeyReleased(evt);
+            }
+        });
 
         impuestotxt.setBackground(new java.awt.Color(204, 204, 204));
-        impuestotxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        impuestotxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         impuestotxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         impuestotxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 impuestotxtActionPerformed(evt);
             }
         });
+        impuestotxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                impuestotxtKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                impuestotxtKeyReleased(evt);
+            }
+        });
 
+        Totaltxt.setEditable(false);
         Totaltxt.setBackground(new java.awt.Color(204, 204, 204));
-        Totaltxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        Totaltxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         Totaltxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Totaltxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,12 +417,18 @@ public class GUIPagos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_IdClientetxtActionPerformed
 
     private void AddLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLblMouseClicked
-      
+       this.ClearTxt();
+        DisableorActiveAll(true);
+       IdPago.setEnabled(false);
+       IdPago.setVisible(false);
+        idpagotxt.setEnabled(false);
+       idpagotxt.setVisible(false);
     }//GEN-LAST:event_AddLblMouseClicked
  
     private void buscarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLblMouseClicked
         // TODO add your handling code here:
-          DisableorActiveAll(false);
+        this.ClearTxt();  
+        DisableorActiveAll(false);
         this.IdPago.setEnabled(true);
          this.IdPago.setVisible(true);
           this.IdPago.setText("Numero de Envio a Buscar");
@@ -421,79 +448,49 @@ this.DisableorActiveAll(false);
     }//GEN-LAST:event_ListoLblMouseClicked
 
     private void ListoLblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListoLblActionPerformed
-        // TODO add your handling code here:
-//        if(NombreLbl.isVisible()){
-//          try {
-//              if( isFechaAntesDeHoy(this.FechaETxt.getText())){
-//                  JOptionPane.showMessageDialog(null, "La fecha de entrega no puede ser anterior a la fecha actual", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-//              }else if(listC.SearchCliente(CedulaTxt.getText())==null){
-//                  JOptionPane.showMessageDialog(null, "El cliente no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-//              }else{
-//                  Envio envio  = new Envio(listC.SearchCliente(CedulaTxt.getText()),
-//                          listP.buscarPaquete(jComboBoxPaquete.getSelectedItem().toString()),
-//                          listR.buscarRuta(jComboBoxRuta.getSelectedItem().toString()),convertirStringAFecha(this.FechaETxt.getText()));
-//                  System.out.println("entro a fecha envio "+this.FechaETxt.getText());
-//                  System.out.println(envio.getRuta().getDescripcion());
-//                  listE.registrarEnvio(envio);
-//                 
-//             
-//                  JOptionPane.showMessageDialog(null, "Envio Registrado, Codigo : "+envio.getNumeroEnvio(), "A nombre del cliente: "+listC.SearchCliente(CedulaTxt.getText()).getNombre(), JOptionPane.WARNING_MESSAGE);
-//                       this.ClearTxt();
-//                  this.DisableorActiveAll(false); 
-//              }
-//          } catch (ParseException ex) {
-//              Logger.getLogger(FrmEnvios.class.getName()).log(Level.SEVERE, null, ex);
-//          }
-//  }else if(CedulaLbl.getText().equals("Numero de Envio a Buscar")){
-//       if(listE.buscarEnvio(Integer.parseInt(this.NumeroEnvioTxt.getText()))!=null){
-//     
-//            Envio envio = listE.buscarEnvio(Integer.parseInt(this.NumeroEnvioTxt.getText()));
-//            this.NumeroEnvioTxt.setText(String.valueOf(envio.getNumeroEnvio()));
-//            this.CedulaTxt.setText(envio.getCliente().getCedula());
-//            this.NombreTxt.setText(envio.getCliente().getNombre());
-//            FechaETxt.setText(String.valueOf(envio.getFechaEntrega()));
-//            FechaETxt1.setText(String.valueOf(envio.getFechaEntrega()));
-//            jComboBoxPaquete.addItem(envio.getPaquete().getCodigo());
-//            jComboBoxRuta.addItem(envio.getRuta().getCodigo());
-//            this.EstadoTxt.setText(envio.getEstado());
-//            DisableorActiveAll(true);
-//            }else{
-//                JOptionPane.showMessageDialog(null, "El envio no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-//            }
-//  }else if(CedulaLbl.getText().equals("Presione listo para despachar!")){
-//                    if(this.listE.getCantidadEnviosNoNulosQ()>0){
-//                   listE.despacharEnvio();
-//              ClearTxt();
-//               JOptionPane.showMessageDialog(null, "Envio Despachado!", "completado", JOptionPane.WARNING_MESSAGE);
-//                    }else{
-//                       JOptionPane.showMessageDialog(null, "El envio no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-//                    }
-//  }else if (CedulaLbl.getText().equals("Numero de Envio a Entregar")){
-//      if(listE.buscarEnvio(Integer.parseInt(NumeroEnvioTxt.getText()))!=null){
-//            if(this.listE.getCantidadEnviosNoNulosQ()>0){
-//       listE.entregarEnvio(Integer.parseInt(NumeroEnvioTxt.getText()));
-//       ClearTxt();
-//        JOptionPane.showMessageDialog(null, "Envio Entregado!", "completado", JOptionPane.WARNING_MESSAGE);
-//            }else{
-//            JOptionPane.showMessageDialog(null, "El envio no existe en la cola de envios", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-//            }
-//  }else{
-//       JOptionPane.showMessageDialog(null, "El envio no existe en la cola de envios", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-//  }
-//  }else if(CedulaLbl.getText().equals("Numero de Envio a Cancelar")){
-//      
-//          if(listE.buscarEnvio(Integer.parseInt(NumeroEnvioTxt.getText()))!=null){
-//              if(this.listE.getCantidadEnviosNoNulosQ()>0){
-//       listE.cancelarEnvio(Integer.parseInt(NumeroEnvioTxt.getText()));
-//       ClearTxt();
-//        JOptionPane.showMessageDialog(null, "Envio Cancelado!", "completado", JOptionPane.WARNING_MESSAGE);
-//              }else{
-//                        JOptionPane.showMessageDialog(null, "El envio no existe en la cola de envios", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-//              }
-//  }else{
-//       JOptionPane.showMessageDialog(null, "El envio no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
-//  } 
-//  }*/
+       
+      if(IdPago.isVisible()){
+          try {
+               PagoDTO dto;
+              dto=dao.read(Integer.valueOf(idpagotxt.getText()));
+              Pago pago=mapper.toEnt(dto);
+              this.DisableorActiveAll(true);
+              subtotaLbl.setEnabled(false);
+              subtotaLbl.setVisible(false);
+              SubTotalTxt.setEnabled(false);
+              SubTotalTxt.setVisible(false);
+               ImpuestoLbl.setEnabled(false);
+              ImpuestoLbl.setVisible(false);
+               TotalLbl.setEnabled(false);
+              TotalLbl.setVisible(false);
+              Totaltxt.setEnabled(false);
+              Totaltxt.setVisible(false);
+              impuestotxt.setVisible(false);
+              impuestotxt.setEnabled(false);
+              IdClientetxt.setText(String.valueOf(pago.getCliente().getId()));
+              FechaTxt.setText(String.valueOf(pago.getFecha()));
+          } catch (SQLException ex) {
+              Logger.getLogger(GUIPagos.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      }else if(!IdClientetxt.getText().isEmpty()&&!FechaTxt.getText().isEmpty()&&!SubTotalTxt.getText().isEmpty()&&!impuestotxt.getText().isEmpty()){
+          SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+           Date fecha;
+          
+          ClienteMapper clientemapper;
+          clientemapper= new ClienteMapper();
+          ClienteDAO clientedao ;
+         
+          try {
+              Pago ent; //ESTE ES LA VARIABLE DE PAGO QUE SE CREO USARLA PARA EL RECIBO
+              fecha = formatter.parse(this.FechaTxt.getText());
+                clientedao= new ClienteDAO(DataBaseConnection.getConnection());
+              ent = new Pago(clientemapper.toEnt(clientedao.read(Integer.valueOf(IdClientetxt.getText()))),
+                      fecha,Double.parseDouble(SubTotalTxt.getText()),Double.parseDouble(impuestotxt.getText()),Double.parseDouble(Totaltxt.getText()));
+              dao.create(mapper.toDTO(ent));
+          } catch (SQLException | ParseException ex) {
+              Logger.getLogger(GUIPagos.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      }
     }//GEN-LAST:event_ListoLblActionPerformed
 
     private void FechaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaTxtActionPerformed
@@ -516,6 +513,21 @@ this.DisableorActiveAll(false);
     private void TotaltxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotaltxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TotaltxtActionPerformed
+
+    private void SubTotalTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SubTotalTxtKeyPressed
+       
+    }//GEN-LAST:event_SubTotalTxtKeyPressed
+
+    private void impuestotxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_impuestotxtKeyPressed
+    }//GEN-LAST:event_impuestotxtKeyPressed
+
+    private void impuestotxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_impuestotxtKeyReleased
+        actualizarTotal();
+    }//GEN-LAST:event_impuestotxtKeyReleased
+
+    private void SubTotalTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SubTotalTxtKeyReleased
+actualizarTotal();
+    }//GEN-LAST:event_SubTotalTxtKeyReleased
 
 public void DisableorActiveAll(boolean bool){
     this.IdPago.setEnabled(bool);
@@ -581,9 +593,19 @@ public void ClearTxt(){
             return null; // O manejar el error según sea necesario
         }
     }
-  private double calcularPrecio1(double peso) {
-        return 2100 + (peso > 1 ? (peso - 1) * 1200 : 0);
+
+private void actualizarTotal() {
+    try {
+        if (!SubTotalTxt.getText().isEmpty() && !impuestotxt.getText().isEmpty()) {
+            double subTotal = Double.parseDouble(SubTotalTxt.getText());
+            double impuesto = Double.parseDouble(impuestotxt.getText());
+            double total = subTotal + (subTotal * (impuesto / 100)); // Correcta aplicación del porcentaje
+            Totaltxt.setText(String.format("%.2f", total)); // Formato a dos decimales
+        }
+    } catch (NumberFormatException e) {
+        Totaltxt.setText(""); // Limpia el campo si los valores no son válidos
     }
+}
   
    public static boolean isFechaAntesDeHoy(String fechaTexto) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
