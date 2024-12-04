@@ -36,14 +36,7 @@ public class GuiMenu extends javax.swing.JFrame {
 
        setLocationRelativeTo(null);
        this.DeskMenu.setEnabled(false);
-      this.DeskMenu.setVisible(false);
-//       actualizarFechaHora();
-//      clientes = ListaCliente.getInstance();
-//      empleados = ListaEmpleados.getInstance();
-//      rutas = ListaRutasEntrega.getInstance();
-//      paquetes = ListaPaquete.getInstance();
-//  listaEnvios = GestionEnvios.getInstance();
-//   CambiarContLbl();                        
+      this.DeskMenu.setVisible(false);                      
     }
 
     /**
@@ -79,10 +72,6 @@ public class GuiMenu extends javax.swing.JFrame {
         PaqueteCont = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         DeskMenu = new javax.swing.JDesktopPane();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -339,51 +328,15 @@ public class GuiMenu extends javax.swing.JFrame {
 
         DeskMenu.setBackground(new java.awt.Color(240, 240, 240));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-paquete-50.png"))); // NOI18N
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-entrega-50.png"))); // NOI18N
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-trabajo-permanente-48.png"))); // NOI18N
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-usuario-48.png"))); // NOI18N
-
-        DeskMenu.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenu.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenu.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DeskMenu.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout DeskMenuLayout = new javax.swing.GroupLayout(DeskMenu);
         DeskMenu.setLayout(DeskMenuLayout);
         DeskMenuLayout.setHorizontalGroup(
             DeskMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DeskMenuLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addGap(115, 115, 115)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addGap(139, 139, 139)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addGap(108, 108, 108)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addGap(162, 162, 162))
+            .addGap(0, 840, Short.MAX_VALUE)
         );
         DeskMenuLayout.setVerticalGroup(
             DeskMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DeskMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(DeskMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DeskMenuLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                        .addGap(385, 385, 385))
-                    .addGroup(DeskMenuLayout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                        .addGap(445, 445, 445))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)))
+            .addGap(0, 521, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -606,11 +559,7 @@ public class GuiMenu extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

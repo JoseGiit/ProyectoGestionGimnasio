@@ -78,7 +78,7 @@ public class ClienteDAO extends Dao<ClienteDTO> {
 
     @Override
     public boolean update(ClienteDTO cliente) throws SQLException {
-        String query = "call sp_actualizar_cliente(?, ?, ?, ?, )";
+        String query = "call sp_actualizar_cliente(?, ?, ?, ? )";
         try (CallableStatement stmt = connection.prepareCall(query)) {
             stmt.setInt(1, cliente.getId());
             stmt.setString(2, cliente.getCorreo());
@@ -95,5 +95,9 @@ public class ClienteDAO extends Dao<ClienteDTO> {
             stmt.setInt(1, (int) id);
             return stmt.executeUpdate() > 0;
         }
+    }
+    
+    public boolean validatePk(int id) throws SQLException{
+        return read(id) != null;
     }
 }

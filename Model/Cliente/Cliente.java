@@ -85,5 +85,12 @@ public class Cliente {
         this.tipoMembresia = tipoMembresia;
         this.membresiaVencimiento = membresiaVencimiento;
     }
+     public Cliente(int id, String correo, String telefono, String tipoMembresia) {
+        this.id = id;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.tipoMembresia = tipoMembresia;
+       
+    }
 
 }
