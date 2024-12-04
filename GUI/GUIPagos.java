@@ -6,11 +6,16 @@ package GUI;
 
 import DataBase.DataBaseConnection;
 import Model.Cliente.ClienteDAO;
+import Model.Cliente.ClienteDTO;
 import Model.Cliente.ClienteMapper;
 import Model.Pago.Pago;
 import Model.Pago.PagoDAO;
 import Model.Pago.PagoDTO;
 import Model.Pago.PagoMapper;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 /*import Clientes.ListaCliente;
 import Envios.Envio;
@@ -29,7 +34,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
+import javax.swing.text.Document;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 /**
  *
  * @author PC
@@ -449,49 +457,113 @@ this.DisableorActiveAll(false);
 
     private void ListoLblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListoLblActionPerformed
        
-      if(IdPago.isVisible()){
-          try {
-               PagoDTO dto;
-              dto=dao.read(Integer.valueOf(idpagotxt.getText()));
-              Pago pago=mapper.toEnt(dto);
-              this.DisableorActiveAll(true);
-              subtotaLbl.setEnabled(false);
-              subtotaLbl.setVisible(false);
-              SubTotalTxt.setEnabled(false);
-              SubTotalTxt.setVisible(false);
-               ImpuestoLbl.setEnabled(false);
-              ImpuestoLbl.setVisible(false);
-               TotalLbl.setEnabled(false);
-              TotalLbl.setVisible(false);
-              Totaltxt.setEnabled(false);
-              Totaltxt.setVisible(false);
-              impuestotxt.setVisible(false);
-              impuestotxt.setEnabled(false);
-              IdClientetxt.setText(String.valueOf(pago.getCliente().getId()));
-              FechaTxt.setText(String.valueOf(pago.getFecha()));
-          } catch (SQLException ex) {
-              Logger.getLogger(GUIPagos.class.getName()).log(Level.SEVERE, null, ex);
-          }
-      }else if(!IdClientetxt.getText().isEmpty()&&!FechaTxt.getText().isEmpty()&&!SubTotalTxt.getText().isEmpty()&&!impuestotxt.getText().isEmpty()){
-          SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-           Date fecha;
+     if (IdPago.isVisible()) {
+        try {
+            PagoDTO dto = dao.read(Integer.valueOf(idpagotxt.getText()));
+            Pago pago = mapper.toEnt(dto);
+
+            this.DisableorActiveAll(true);
+            subtotaLbl.setEnabled(false);
+            subtotaLbl.setVisible(false);
+            SubTotalTxt.setEnabled(false);
+            SubTotalTxt.setVisible(false);
+            ImpuestoLbl.setEnabled(false);
+            ImpuestoLbl.setVisible(false);
+            TotalLbl.setEnabled(false);
+            TotalLbl.setVisible(false);
+            Totaltxt.setEnabled(false);
+            Totaltxt.setVisible(false);
+            impuestotxt.setVisible(false);
+            impuestotxt.setEnabled(false);
+
+            IdClientetxt.setText(String.valueOf(pago.getCliente().getId()));
+            FechaTxt.setText(String.valueOf(pago.getFecha()));
+
+        } catch (SQLException ex) {
+            Logger.getLogger(GUIPagos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al leer el pago: " + ex.getMessage(), 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else if (!IdClientetxt.getText().isEmpty() && !FechaTxt.getText().isEmpty() &&
+               !SubTotalTxt.getText().isEmpty() && !impuestotxt.getText().isEmpty() &&
+               !Totaltxt.getText().isEmpty()) {
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaActual = new Date(); // Obtener la fecha actual automáticamente
+
+        ClienteMapper clientemapper = new ClienteMapper();
+        ClienteDAO clientedao;
+
+        try {
+            // Validar cliente
+            clientedao = new ClienteDAO(DataBaseConnection.getConnection());
+            int idCliente = Integer.parseInt(IdClientetxt.getText());
+            ClienteDTO clienteDTO = clientedao.read(idCliente);
+
+            if (clienteDTO == null) {
+                JOptionPane.showMessageDialog(this, "El cliente con ID " + idCliente + " no existe.",
+                        "Cliente no encontrado", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Generar fecha actual
+            fechaActual = new Date();  // Fecha actual
+
+            double subTotal = 0.0;
+            try {
+                String subTotalText = SubTotalTxt.getText().trim();
+                subTotalText = subTotalText.replace(",", "");  // Eliminar comas si las hay
+                subTotal = Double.parseDouble(subTotalText);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "El SubTotal no es válido. Asegúrese de que es un número.",
+                        "Error de formato", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validar impuesto
+            double impuesto = 0.0;
+            try {
+                String impuestoText = impuestotxt.getText().trim();
+                impuestoText = impuestoText.replace(",", ""); // Eliminar comas si las hay
+                impuesto = Double.parseDouble(impuestoText);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "El Impuesto no es válido. Asegúrese de que es un número.",
+                        "Error de formato", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validar Total
+            double total = 0.0;
+            try {
+                String totalText = Totaltxt.getText().trim();
+                totalText = totalText.replace(",", "");  // Eliminar comas si las hay
+                total = Double.parseDouble(totalText);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "El Total no es válido. Asegúrese de que es un número.",
+                        "Error de formato", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Crear el pago
+            Pago ent = new Pago(clientemapper.toEnt(clienteDTO), fechaActual, subTotal, impuesto, total);
+            dao.create(mapper.toDTO(ent));
+            this.ClearTxt();
+            
+
+            // Generar PDF con la información del pago
            
-          
-          ClienteMapper clientemapper;
-          clientemapper= new ClienteMapper();
-          ClienteDAO clientedao ;
-         
-          try {
-              Pago ent; //ESTE ES LA VARIABLE DE PAGO QUE SE CREO USARLA PARA EL RECIBO
-              fecha = formatter.parse(this.FechaTxt.getText());
-                clientedao= new ClienteDAO(DataBaseConnection.getConnection());
-              ent = new Pago(clientemapper.toEnt(clientedao.read(Integer.valueOf(IdClientetxt.getText()))),
-                      fecha,Double.parseDouble(SubTotalTxt.getText()),Double.parseDouble(impuestotxt.getText()),Double.parseDouble(Totaltxt.getText()));
-              dao.create(mapper.toDTO(ent));
-          } catch (SQLException | ParseException ex) {
-              Logger.getLogger(GUIPagos.class.getName()).log(Level.SEVERE, null, ex);
-          }
-      }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(GUIPagos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al procesar el pago: " + ex.getMessage(), 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+
+        } catch (NumberFormatException ex) {
+            Logger.getLogger(GUIPagos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en el formato numérico: " + ex.getMessage(),
+                    "Error de formato", JOptionPane.WARNING_MESSAGE);
+        }
+    }
     }//GEN-LAST:event_ListoLblActionPerformed
 
     private void FechaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaTxtActionPerformed
@@ -576,6 +648,7 @@ public void ClearTxt(){
      this.SubTotalTxt.setText("");
      this.Totaltxt.setText("");
      this.FechaTxt.setText("");
+     impuestotxt.setText("");
        
 }
  public LocalDate convertirStringAFecha(String fechaStr) {
