@@ -4,11 +4,16 @@
  */
 package GUI;
 
-//import Empleados.Empleado;
-//import Empleados.ListaEmpleados;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.sql.SQLException;
+import DataBase.DataBaseConnection;
+import Model.Entrenador.Entrenador;
+import Model.Entrenador.EntrenadorDAO;
+import Model.Entrenador.EntrenadorMapper;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,11 +24,18 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
     /**
      * Creates new form FrmEmpleados
      */
-  /*  private ListaEmpleados listE;
-    public FrmEmpleados() {
+    private EntrenadorDAO dao;
+    private final EntrenadorMapper mapper;
+
+    public GUIEntrenador() {
         initComponents();
         DisableorActiveAll(false);
-        listE = ListaEmpleados.getInstance();/*
+        try {
+            dao = new EntrenadorDAO(DataBaseConnection.getConnection());
+        } catch (SQLException ex) {
+            //showError("Error al conectar con la Base de Datos");
+        }
+        mapper = new EntrenadorMapper();
     }
 
     /**
@@ -55,11 +67,15 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
         NombreLbl = new javax.swing.JLabel();
         NombreTxt = new javax.swing.JTextField();
         TelLbl = new javax.swing.JLabel();
-        TelTxt = new javax.swing.JTextField();
-        CorreoLbl = new javax.swing.JLabel();
-        CorreoTxt = new javax.swing.JTextField();
+        EspecialidadTxt = new javax.swing.JTextField();
         PuestoLbl = new javax.swing.JLabel();
-        PuestoTxt = new javax.swing.JTextField();
+        BienestarBox = new javax.swing.JCheckBox();
+        FuncionalBox = new javax.swing.JCheckBox();
+        PersonalBox = new javax.swing.JCheckBox();
+        NutricionBox = new javax.swing.JCheckBox();
+        FuerzaBox = new javax.swing.JCheckBox();
+        RehabilitacionBox = new javax.swing.JCheckBox();
+        TelTxt1 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -87,7 +103,6 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-trabajo-permanente-24.png"))); // NOI18N
         jLabel1.setText("                                                             Entrenadores");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -111,7 +126,7 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
 
         AddLbl.setBackground(new java.awt.Color(255, 255, 255));
         AddLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        AddLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-añadir-usuario-masculino-24.png"))); // NOI18N
+        AddLbl.setForeground(new java.awt.Color(255, 255, 255));
         AddLbl.setText(" Agregar ");
         AddLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -121,7 +136,7 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
 
         buscarLbl.setBackground(new java.awt.Color(255, 255, 255));
         buscarLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        buscarLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-encuentra-hombre-usuario-24.png"))); // NOI18N
+        buscarLbl.setForeground(new java.awt.Color(255, 255, 255));
         buscarLbl.setText("Buscar");
         buscarLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -131,7 +146,7 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
 
         DeleteLbl.setBackground(new java.awt.Color(255, 255, 255));
         DeleteLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        DeleteLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-eliminar-usuario-masculino-24.png"))); // NOI18N
+        DeleteLbl.setForeground(new java.awt.Color(255, 255, 255));
         DeleteLbl.setText("Eliminar");
         DeleteLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -141,7 +156,7 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
 
         ActualizarLbl.setBackground(new java.awt.Color(255, 255, 255));
         ActualizarLbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        ActualizarLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-editar-usuaria-24.png"))); // NOI18N
+        ActualizarLbl.setForeground(new java.awt.Color(255, 255, 255));
         ActualizarLbl.setText("Actualizar");
         ActualizarLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,7 +165,7 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
         });
 
         ListoLbl.setBackground(new java.awt.Color(33, 37, 41));
-        ListoLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-casilla-de-verificación-marcada-24.png"))); // NOI18N
+        ListoLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-casilla-de-verificación-marcada-24.png"))); // NOI18N
         ListoLbl.setBorderPainted(false);
         ListoLbl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +174,7 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
         });
 
         CancelLbl.setBackground(new java.awt.Color(33, 37, 41));
-        CancelLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/imagenes/icons8-delete-24.png"))); // NOI18N
+        CancelLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-cancelar-24.png"))); // NOI18N
         CancelLbl.setBorderPainted(false);
         CancelLbl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,23 +260,11 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
         TelLbl.setForeground(new java.awt.Color(153, 153, 153));
         TelLbl.setText("Telefono:");
 
-        TelTxt.setBackground(new java.awt.Color(204, 204, 204));
-        TelTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        TelTxt.addActionListener(new java.awt.event.ActionListener() {
+        EspecialidadTxt.setBackground(new java.awt.Color(204, 204, 204));
+        EspecialidadTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        EspecialidadTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TelTxtActionPerformed(evt);
-            }
-        });
-
-        CorreoLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        CorreoLbl.setForeground(new java.awt.Color(153, 153, 153));
-        CorreoLbl.setText("Correo:");
-
-        CorreoTxt.setBackground(new java.awt.Color(204, 204, 204));
-        CorreoTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        CorreoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CorreoTxtActionPerformed(evt);
+                EspecialidadTxtActionPerformed(evt);
             }
         });
 
@@ -269,11 +272,45 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
         PuestoLbl.setForeground(new java.awt.Color(153, 153, 153));
         PuestoLbl.setText("Especialidades:");
 
-        PuestoTxt.setBackground(new java.awt.Color(204, 204, 204));
-        PuestoTxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        PuestoTxt.addActionListener(new java.awt.event.ActionListener() {
+        BienestarBox.setBackground(new java.awt.Color(153, 153, 153));
+        BienestarBox.setForeground(new java.awt.Color(0, 0, 0));
+        BienestarBox.setText("Bienestar");
+        BienestarBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PuestoTxtActionPerformed(evt);
+                BienestarBoxActionPerformed(evt);
+            }
+        });
+
+        FuncionalBox.setBackground(new java.awt.Color(153, 153, 153));
+        FuncionalBox.setForeground(new java.awt.Color(0, 0, 0));
+        FuncionalBox.setText("Funcional");
+
+        PersonalBox.setBackground(new java.awt.Color(153, 153, 153));
+        PersonalBox.setForeground(new java.awt.Color(0, 0, 0));
+        PersonalBox.setText("Personal");
+
+        NutricionBox.setBackground(new java.awt.Color(153, 153, 153));
+        NutricionBox.setForeground(new java.awt.Color(0, 0, 0));
+        NutricionBox.setText("Nutrición");
+
+        FuerzaBox.setBackground(new java.awt.Color(153, 153, 153));
+        FuerzaBox.setForeground(new java.awt.Color(0, 0, 0));
+        FuerzaBox.setText("Fuerza");
+
+        RehabilitacionBox.setBackground(new java.awt.Color(153, 153, 153));
+        RehabilitacionBox.setForeground(new java.awt.Color(0, 0, 0));
+        RehabilitacionBox.setText("Rehabilitación");
+        RehabilitacionBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RehabilitacionBoxActionPerformed(evt);
+            }
+        });
+
+        TelTxt1.setBackground(new java.awt.Color(204, 204, 204));
+        TelTxt1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        TelTxt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TelTxt1ActionPerformed(evt);
             }
         });
 
@@ -289,29 +326,44 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(NombreLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(55, 55, 55)
-                                        .addComponent(PuestoLbl))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(PuestoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(CedulaLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(CedulaTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
-                                        .addGap(40, 40, 40)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(CorreoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                                            .addComponent(CorreoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
+                                        .addGap(10, 10, 10)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(TelLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TelTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(NombreLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(92, 92, 92))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(77, 77, 77))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(CedulaLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(CedulaTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TelTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TelLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EspecialidadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(PersonalBox)
+                                            .addComponent(FuncionalBox)
+                                            .addComponent(FuerzaBox))
+                                        .addGap(31, 31, 31)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(NutricionBox)
+                                            .addComponent(BienestarBox, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(RehabilitacionBox))
+                                        .addGap(62, 62, 62))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(PuestoLbl)
+                                        .addGap(124, 124, 124)))
+                                .addGap(34, 34, 34)))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -321,29 +373,43 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 5, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CedulaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CorreoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CedulaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CorreoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(CedulaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(CedulaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(NombreLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(TelLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(PuestoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(BienestarBox, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PersonalBox))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(FuncionalBox)
+                                    .addComponent(RehabilitacionBox))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(FuerzaBox)
+                                    .addComponent(NutricionBox))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NombreLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PuestoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PuestoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(TelLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TelTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(EspecialidadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TelTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -369,17 +435,9 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreTxtActionPerformed
 
-    private void TelTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelTxtActionPerformed
+    private void EspecialidadTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EspecialidadTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TelTxtActionPerformed
-
-    private void CorreoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorreoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CorreoTxtActionPerformed
-
-    private void PuestoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuestoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PuestoTxtActionPerformed
+    }//GEN-LAST:event_EspecialidadTxtActionPerformed
 
     private void AddLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLblMouseClicked
         // TODO add your handling code here:
@@ -388,159 +446,239 @@ public class GUIEntrenador extends javax.swing.JInternalFrame {
 
     private void buscarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLblMouseClicked
         // TODO add your handling code here:
-          DisableorActiveAll(false);
-         this.CedulaLbl.setText("Ingrese la Cedula para buscar");
+        ClearTxt();
+        DisableorActiveAll(false);
+        this.CedulaLbl.setText("Ingrese la Cedula para buscar:");
         this.CedulaLbl.setEnabled(true);
-         this.CedulaLbl.setVisible(true);
+        this.CedulaLbl.setVisible(true);
         this.CedulaTxt.setEnabled(true);
-             this.CedulaTxt.setText("");
+        this.CedulaTxt.setText("");
         this.CedulaTxt.setVisible(true);
     }//GEN-LAST:event_buscarLblMouseClicked
 
     private void DeleteLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteLblMouseClicked
         // TODO add your handling code here:
-//        ClearTxt();
-//        DisableorActiveAll(false);
-//        this.CedulaLbl.setText("Ingrese la Cedula para eliminar");
-//         this.CedulaLbl.setEnabled(true);
-//         this.CedulaLbl.setVisible(true);
-//        this.CedulaTxt.setEnabled(true);
-//        this.CedulaTxt.setVisible(true);
+        ClearTxt();
+        DisableorActiveAll(false);
+        this.CedulaLbl.setText("Ingrese la Cedula para eliminar");
+        this.CedulaLbl.setEnabled(true);
+        this.CedulaLbl.setVisible(true);
+        this.CedulaTxt.setEnabled(true);
+        this.CedulaTxt.setVisible(true);
     }//GEN-LAST:event_DeleteLblMouseClicked
 
     private void ActualizarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarLblMouseClicked
-        // TODO add your handling code here:
-//        ClearTxt();
-//               DisableorActiveAll(false);
-//        this.CedulaLbl.setEnabled(true);
-//        this.CedulaLbl.setVisible(true);
-//        this.CedulaTxt.setEnabled(true);
-//        this.CedulaTxt.setVisible(true);
-//        this.NombreLbl.setText("Nuevo Telefono:");
-//        this.NombreLbl.setEnabled(true);
-//         this.NombreLbl.setVisible(true);
-//         this.NombreTxt.setEnabled(true);
-//         this.NombreTxt.setVisible(true);
-//         this.CorreoLbl.setText("Nuevo Correo:");
-//         this.CorreoLbl.setEnabled(true);
-//          this.CorreoLbl.setVisible(true);
-//          this.CorreoTxt.setEnabled(true);
-//          this.CorreoTxt.setVisible(true);
+        ClearTxt();
+        DisableorActiveAll(false);
+        this.CedulaLbl.setEnabled(true);
+        this.CedulaLbl.setVisible(true);
+        this.CedulaTxt.setEnabled(true);
+        this.CedulaTxt.setVisible(true);
+        this.TelLbl.setText("Nuevo Telefono:");
+        this.TelLbl.setEnabled(true);
+        this.TelLbl.setVisible(true);
+        this.EspecialidadTxt.setEnabled(true);
+        this.EspecialidadTxt.setVisible(true);
+        this.PuestoLbl.setText("Nueva Especialidad:");
+        this.PuestoLbl.setEnabled(true);
+        this.PuestoLbl.setVisible(true);
+//        this.EspecialidadTxt.setEnabled(true);
+//        this.EspecialidadTxt.setVisible(true);
+
     }//GEN-LAST:event_ActualizarLblMouseClicked
 
     private void ListoLblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListoLblActionPerformed
-        // TODO add your handling code here:
-        
-       /* if(!this.CedulaTxt.getText().isEmpty()&&!this.NombreTxt.getText().isEmpty()&&!this.FechaNTxt.getText().isEmpty()&&
-              !this.CorreoTxt.getText().isEmpty()&& !this.TelTxt.getText().isEmpty()){
-            DateTimeFormatter formatter =DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            
-            Empleado emp = new Empleado(this.PuestoTxt.getText(),Double.parseDouble(this.SalarioTxt.getText()),this.CedulaTxt.getText(),
-           this.NombreTxt.getText(), LocalDate.parse(this.FechaNTxt.getText(),formatter),this.TelTxt.getText(), this.CorreoTxt.getText());
-            listE.agregarEmpleado(emp);
-               ClearTxt();
-                DisableorActiveAll(false);
-             
-        }else if(this.NombreLbl.getText().equals("Nuevo Telefono:")){
-            
-               listE.buscarEmpleado(this.CedulaTxt.getText()).setCorreo(this.CorreoTxt.getText());
-               listE.buscarEmpleado(this.CedulaTxt.getText()).setTelefono(this.NombreTxt.getText());
-                DisableorActiveAll(false);
+
+        if (!this.NombreTxt.getText().isEmpty()
+                && !this.EspecialidadTxt.getText().isEmpty()
+                && alMenosUnCheckboxSeleccionado(PersonalBox, BienestarBox, FuncionalBox, RehabilitacionBox, FuerzaBox, NutricionBox)) {
+
+            try {
+                String especialidadesSeleccionadas = obtenerEspecialidadesSeleccionadas(PersonalBox, BienestarBox, FuncionalBox, RehabilitacionBox, FuerzaBox, NutricionBox);
+                Entrenador emp = new Entrenador(
+                        this.NombreTxt.getText(),
+                        this.EspecialidadTxt.getText(),
+                        especialidadesSeleccionadas);
+
+                dao.create(mapper.toDTO(emp));
                 ClearTxt();
-                
-        }else if(this.CedulaLbl.getText().equals("Ingrese la Cedula para buscar")){
-            
-            if(listE.buscarEmpleado(this.CedulaTxt.getText())!=null){
-     
-            Empleado emp = listE.buscarEmpleado(this.CedulaTxt.getText());
-            this.CedulaTxt.setText(emp.getCedula());
-            this.NombreTxt.setText(emp.getNombre());
-            this.FechaNTxt.setText(String.valueOf(emp.getFechaNacimiento()));
-            this.CorreoTxt.setText(emp.getCorreo());
-            this.PuestoTxt.setText(emp.getPuesto());
-            this.SalarioTxt.setText(String.valueOf(emp.getSalario()));
-            this.TelTxt.setText(emp.getTelefono());
+                DisableorActiveAll(false);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(GUIEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else if (this.CedulaLbl.getText().equals("Ingrese la Cedula para buscar:")) {
+
+            Entrenador emp;
+
+            try {
+                if (dao.validatePk(Integer.parseInt(this.CedulaTxt.getText()))) {
+                    emp = mapper.toEnt(dao.read(Integer.valueOf(this.CedulaTxt.getText())));
+                    CedulaTxt.setText(String.valueOf(emp.getId()));
+                    NombreTxt.setText(emp.getNombre());
+                    EspecialidadTxt.setText(emp.getContacto());
+                    EspecialidadTxt.setText(emp.getEspecialidades());
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "El cliente no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
             DisableorActiveAll(true);
-            
-            }else{
-                JOptionPane.showMessageDialog(null, "El empleado no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
+
+        } else if (this.CedulaLbl.getText().equals("Ingrese la Cedula para eliminar")) {
+
+            try {
+                if (dao.validatePk(Integer.parseInt(this.CedulaTxt.getText()))) {
+
+                    dao.delete(Integer.valueOf(CedulaTxt.getText()));
+                    ClearTxt();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "El cliente no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
+
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
-          
-            if(listE.buscarEmpleado(this.CedulaTxt.getText())!=null){
-            listE.eliminarEmpleado(this.CedulaTxt.getText());
-            }else{
-                JOptionPane.showMessageDialog(null, "El empleado no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE); 
+        } else {
+
+            try {
+
+                if (dao.validatePk(Integer.parseInt(this.CedulaTxt.getText()))) {
+                    String especialidadesSeleccionadas = obtenerEspecialidadesSeleccionadas(PersonalBox, BienestarBox, FuncionalBox, RehabilitacionBox, FuerzaBox, NutricionBox);
+
+                    Entrenador entrenador = new Entrenador(Integer.parseInt(
+                            CedulaTxt.getText()),
+                            NombreTxt.getText(),
+                            EspecialidadTxt.getText(),
+                            especialidadesSeleccionadas);
+                    dao.update(mapper.toDTO(entrenador));
+                    DisableorActiveAll(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "El cliente no existe", "informacion incorrecta", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }*/
+        }
     }//GEN-LAST:event_ListoLblActionPerformed
 
     private void CancelLblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelLblActionPerformed
         // TODO add your handling code here:
-      /* DisableorActiveAll(false);
-        ClearTxt();*/
+        DisableorActiveAll(false);
+        ClearTxt();
     }//GEN-LAST:event_CancelLblActionPerformed
 
-public void DisableorActiveAll(boolean bool){
-//    this.CedulaLbl.setText("Cedula:");
-//        this.CorreoLbl.setText("Correo:");
-//       this.NombreLbl.setText("Nombre:");
-//          this.FechaNLbl.setText("Fecha N:");
-//    this.CedulaLbl.setEnabled(bool);
-//    this.CedulaLbl.setVisible(bool);
-//    this.CedulaTxt.setEnabled(bool);
-//    this.CedulaTxt.setVisible(bool);
-//    this.NombreLbl.setEnabled(bool);
-//    this.NombreLbl.setVisible(bool);
-//    this.NombreTxt.setEnabled(bool);
-//    this.NombreTxt.setVisible(bool);
-//    this.FechaNLbl.setEnabled(bool);
-//    this.FechaNLbl.setVisible(bool);
-//    this.FechaNTxt.setEnabled(bool);
-//    this.FechaNTxt.setVisible(bool);
-//     this.CorreoLbl.setEnabled(bool);
-//    this.CorreoLbl.setVisible(bool);
-//    this.CorreoTxt.setEnabled(bool);
-//    this.CorreoTxt.setVisible(bool);
-//    this.TelLbl.setEnabled(bool);
-//    this.TelLbl.setVisible(bool);
-//    this.TelTxt.setEnabled(bool);
-//    this.TelTxt.setVisible(bool);
-//    this.PuestoLbl.setEnabled(bool);
-//    this.PuestoLbl.setVisible(bool);
-//    this.PuestoTxt.setEnabled(bool);
-//    this.PuestoTxt.setVisible(bool);
-//    this.SalarioLbl.setEnabled(bool);
-//    this.SalarioLbl.setVisible(bool);
-//    this.SalarioTxt.setEnabled(bool);
-//    this.SalarioTxt.setVisible(bool);
-//}
-//public void ClearTxt(){
-//    this.CedulaTxt.setText("");
-//    this.NombreTxt.setText("");
-//    this.FechaNTxt.setText("");
-//    this.CorreoTxt.setText("");
-//    this.TelTxt.setText("");
-//    this.PuestoTxt.setText("");
-//    this.SalarioTxt.setText("");
+    private void BienestarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BienestarBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BienestarBoxActionPerformed
 
-}
+    private void RehabilitacionBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RehabilitacionBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RehabilitacionBoxActionPerformed
+
+    private void TelTxt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelTxt1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TelTxt1ActionPerformed
+    public static String obtenerEspecialidadesSeleccionadas(JCheckBox PersonalBox, JCheckBox BienestarBox, JCheckBox FuncionalBox, JCheckBox RehabilitacionBox, JCheckBox FuerzaBox, JCheckBox NutricionBox) {
+        StringBuilder seleccionadas = new StringBuilder();
+
+        JCheckBox[] checkBoxes = {
+            PersonalBox, BienestarBox, FuncionalBox, RehabilitacionBox, FuerzaBox, NutricionBox
+        };
+
+        for (JCheckBox checkBox : checkBoxes) {
+            if (checkBox.isSelected()) {
+                if (seleccionadas.length() > 0) {
+                    seleccionadas.append(", ");
+                }
+                seleccionadas.append(checkBox.getText());
+            }
+        }
+
+        return seleccionadas.toString();
+    }
+
+    public void DisableorActiveAll(boolean bool) {
+        //    this.CedulaLbl.setText("Cedula:");
+        //        this.CorreoLbl.setText("Correo:");
+        //       this.NombreLbl.setText("Nombre:");
+        //          this.FechaNLbl.setText("Fecha N:");
+        //    this.CedulaLbl.setEnabled(bool);
+        //    this.CedulaLbl.setVisible(bool);
+        //    this.CedulaTxt.setEnabled(bool);
+        //    this.CedulaTxt.setVisible(bool);
+        //    this.NombreLbl.setEnabled(bool);
+        //    this.NombreLbl.setVisible(bool);
+        //    this.NombreTxt.setEnabled(bool);
+        //    this.NombreTxt.setVisible(bool);
+        //    this.FechaNLbl.setEnabled(bool);
+        //    this.FechaNLbl.setVisible(bool);
+        //    this.FechaNTxt.setEnabled(bool);
+        //    this.FechaNTxt.setVisible(bool);
+        //     this.CorreoLbl.setEnabled(bool);
+        //    this.CorreoLbl.setVisible(bool);
+        //    this.CorreoTxt.setEnabled(bool);
+        //    this.CorreoTxt.setVisible(bool);
+        //    this.TelLbl.setEnabled(bool);
+        //    this.TelLbl.setVisible(bool);
+        //    this.TelTxt.setEnabled(bool);
+        //    this.TelTxt.setVisible(bool);
+        //    this.PuestoLbl.setEnabled(bool);
+        //    this.PuestoLbl.setVisible(bool);
+        //    this.PuestoTxt.setEnabled(bool);
+        //    this.PuestoTxt.setVisible(bool);
+        //    this.SalarioLbl.setEnabled(bool);
+        //    this.SalarioLbl.setVisible(bool);
+        //    this.SalarioTxt.setEnabled(bool);
+        //    this.SalarioTxt.setVisible(bool);
+    }
+
+    public void ClearTxt() {
+        this.CedulaTxt.setText("");
+        this.NombreTxt.setText("");
+        this.EspecialidadTxt.setText("");
+        this.EspecialidadTxt.setText("");
+
+    }
+
+    public void showError(String err) {
+        JOptionPane.showMessageDialog(this, err, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private boolean alMenosUnCheckboxSeleccionado(JCheckBox... checkBoxes) {
+        for (JCheckBox checkBox : checkBoxes) {
+            if (checkBox.isSelected()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ActualizarLbl;
     private javax.swing.JLabel AddLbl;
+    private javax.swing.JCheckBox BienestarBox;
     private javax.swing.JButton CancelLbl;
     private javax.swing.JLabel CedulaLbl;
     private javax.swing.JTextField CedulaTxt;
-    private javax.swing.JLabel CorreoLbl;
-    private javax.swing.JTextField CorreoTxt;
     private javax.swing.JLabel DeleteLbl;
+    private javax.swing.JTextField EspecialidadTxt;
+    private javax.swing.JCheckBox FuerzaBox;
+    private javax.swing.JCheckBox FuncionalBox;
     private javax.swing.JButton ListoLbl;
     private javax.swing.JLabel NombreLbl;
     private javax.swing.JTextField NombreTxt;
+    private javax.swing.JCheckBox NutricionBox;
+    private javax.swing.JCheckBox PersonalBox;
     private javax.swing.JLabel PuestoLbl;
-    private javax.swing.JTextField PuestoTxt;
+    private javax.swing.JCheckBox RehabilitacionBox;
     private javax.swing.JLabel TelLbl;
-    private javax.swing.JTextField TelTxt;
+    private javax.swing.JTextField TelTxt1;
     private javax.swing.JLabel buscarLbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

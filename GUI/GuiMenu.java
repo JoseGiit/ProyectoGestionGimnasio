@@ -24,19 +24,18 @@ public class GuiMenu extends javax.swing.JFrame {
     /**
      * Creates new form GuiMenu
      */
- private GUICliente frmClientes;
- private GUIEntrenador frmEntrenador;
- private GUIClases frmClases;
- private GUIPagos frmPagos;
-
+    private GUICliente frmClientes;
+    private GUIEntrenador frmEntrenador;
+    private GUIClases frmClases;
+    private GUIPagos frmPagos;
 
     public GuiMenu() {
 
-       initComponents();
+        initComponents();
 
-       setLocationRelativeTo(null);
-       this.DeskMenu.setEnabled(false);
-      this.DeskMenu.setVisible(false);                      
+        setLocationRelativeTo(null);
+        this.DeskMenu.setEnabled(false);
+        this.DeskMenu.setVisible(false);
     }
 
     /**
@@ -398,22 +397,22 @@ public class GuiMenu extends javax.swing.JFrame {
 
     private void ClientesLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClientesLblMouseClicked
         // TODO add your handling code here:
-         DeskMenu.setEnabled(false);
-         DeskMenu.setVisible(false);
+        DeskMenu.setEnabled(false);
+        DeskMenu.setVisible(false);
         DeskMenu.setEnabled(true);
         DeskMenu.setVisible(true);
         this.frmClientes = new GUICliente();
-         this.DeskMenu.add(frmClientes);
-           frmClientes.setEnabled(true);
-          frmClientes.setVisible(true);
+        this.DeskMenu.add(frmClientes);
+        frmClientes.setEnabled(true);
+        frmClientes.setVisible(true);
 //        
     }//GEN-LAST:event_ClientesLblMouseClicked
 
     private void ClasesLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClasesLblMouseClicked
         // TODO add your handling code here:}
         DeskMenu.setEnabled(false);
-          DeskMenu.setVisible(false);
-          
+        DeskMenu.setVisible(false);
+
         DeskMenu.setEnabled(true);
         DeskMenu.setVisible(true);
         this.frmClases = new GUIClases();
@@ -424,9 +423,8 @@ public class GuiMenu extends javax.swing.JFrame {
 
     private void EntrenadoresLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrenadoresLblMouseClicked
         // TODO add your handling code here:
-         DeskMenu.setEnabled(false);
-         DeskMenu.setVisible(false);
-          
+        DeskMenu.setEnabled(false);
+        DeskMenu.setVisible(false);
         DeskMenu.setEnabled(true);
         DeskMenu.setVisible(true);
         this.frmEntrenador = new GUIEntrenador();
@@ -438,11 +436,11 @@ public class GuiMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_EntrenadoresLblMouseClicked
 
     private void PagosLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PagosLblMouseClicked
-     // TODO add your handling code here:
-                 DeskMenu.setEnabled(false);
-          DeskMenu.setVisible(false);
-                  DeskMenu.setEnabled(true);
-           DeskMenu.setVisible(true);
+        // TODO add your handling code here:
+        DeskMenu.setEnabled(false);
+        DeskMenu.setVisible(false);
+        DeskMenu.setEnabled(true);
+        DeskMenu.setVisible(true);
         this.frmPagos = new GUIPagos();
         this.DeskMenu.add(frmPagos);
         frmPagos.setEnabled(true);

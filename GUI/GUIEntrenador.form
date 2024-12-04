@@ -94,37 +94,58 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="NombreLbl" min="-2" pref="205" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                          <Component id="PuestoLbl" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="NombreTxt" min="-2" pref="220" max="-2" attributes="0"/>
-                                          <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                                          <Component id="PuestoTxt" min="-2" pref="220" max="-2" attributes="0"/>
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="NombreLbl" min="-2" pref="205" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="NombreTxt" min="-2" pref="220" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="CedulaLbl" max="32767" attributes="0"/>
+                                                      <Component id="CedulaTxt" pref="220" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="CedulaLbl" max="32767" attributes="0"/>
-                                              <Component id="CedulaTxt" pref="220" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="CorreoTxt" pref="220" max="32767" attributes="0"/>
-                                              <Component id="CorreoLbl" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="TelTxt1" min="-2" pref="220" max="-2" attributes="0"/>
                                               <Component id="TelLbl" min="-2" pref="90" max="-2" attributes="0"/>
-                                              <Component id="TelTxt" min="-2" pref="220" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="EspecialidadTxt" min="-2" pref="379" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="PersonalBox" min="-2" max="-2" attributes="0"/>
+                                              <Component id="FuncionalBox" min="-2" max="-2" attributes="0"/>
+                                              <Component id="FuerzaBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="NutricionBox" min="-2" max="-2" attributes="0"/>
+                                              <Component id="BienestarBox" min="-2" pref="116" max="-2" attributes="0"/>
+                                              <Component id="RehabilitacionBox" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="PuestoLbl" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -140,34 +161,53 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="CedulaLbl" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="CorreoLbl" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="CedulaTxt" min="-2" max="-2" attributes="0"/>
-                              <Component id="CorreoTxt" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Component id="CedulaLbl" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Component id="CedulaTxt" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Component id="NombreLbl" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Component id="NombreTxt" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="TelLbl" min="-2" pref="20" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="PuestoLbl" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="BienestarBox" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="PersonalBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="FuncionalBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RehabilitacionBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="FuerzaBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="NutricionBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="NombreLbl" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="PuestoLbl" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Component id="EspecialidadTxt" min="-2" pref="114" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="TelTxt1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="NombreTxt" min="-2" max="-2" attributes="0"/>
-                              <Component id="PuestoTxt" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="TelLbl" min="-2" pref="20" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="TelTxt" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -206,9 +246,6 @@
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="18" style="1"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/GUI/imagenes/icons8-trabajo-permanente-24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="                                                             Entrenadores"/>
               </Properties>
@@ -282,8 +319,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/GUI/imagenes/icons8-a&#xf1;adir-usuario-masculino-24.png"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value=" Agregar "/>
               </Properties>
@@ -299,8 +336,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/GUI/imagenes/icons8-encuentra-hombre-usuario-24.png"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
@@ -316,8 +353,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/GUI/imagenes/icons8-eliminar-usuario-masculino-24.png"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
               </Properties>
@@ -333,8 +370,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/GUI/imagenes/icons8-editar-usuaria-24.png"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
               </Properties>
@@ -348,7 +385,7 @@
                   <Color blue="29" green="25" red="21" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/GUI/imagenes/icons8-casilla-de-verificaci&#xf3;n-marcada-24.png"/>
+                  <Image iconType="3" name="/images/icons8-casilla-de-verificaci&#xf3;n-marcada-24.png"/>
                 </Property>
                 <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
@@ -362,7 +399,7 @@
                   <Color blue="29" green="25" red="21" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/GUI/imagenes/icons8-delete-24.png"/>
+                  <Image iconType="3" name="/images/icons8-cancelar-24.png"/>
                 </Property>
                 <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
@@ -451,7 +488,7 @@
             <Property name="text" type="java.lang.String" value="Telefono:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TelTxt">
+        <Component class="javax.swing.JTextField" name="EspecialidadTxt">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -461,31 +498,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TelTxtActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="CorreoLbl">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="18" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Correo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="CorreoTxt">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="14" style="1"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CorreoTxtActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EspecialidadTxtActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="PuestoLbl">
@@ -499,7 +512,79 @@
             <Property name="text" type="java.lang.String" value="Especialidades:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="PuestoTxt">
+        <Component class="javax.swing.JCheckBox" name="BienestarBox">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Bienestar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BienestarBoxActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="FuncionalBox">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Funcional"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="PersonalBox">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Personal"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="NutricionBox">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Nutrici&#xf3;n"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="FuerzaBox">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Fuerza"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="RehabilitacionBox">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Rehabilitaci&#xf3;n"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RehabilitacionBoxActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="TelTxt1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -509,7 +594,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PuestoTxtActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TelTxt1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -84,4 +84,7 @@ public class EntrenadorDAO extends Dao<EntrenadorDTO> {
             return stmt.executeUpdate() > 0;
         }
     }
+    public boolean validatePk(int id) throws SQLException{
+        return read(id) != null;
+    }
 }
